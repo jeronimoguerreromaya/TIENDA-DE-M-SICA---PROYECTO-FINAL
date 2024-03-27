@@ -7,60 +7,71 @@ public class TiendaMusica {
 
 
 
-    private HashMap<String, Usuario> usuarios;
+    private HashMap<String, Usuario> usuarios = new HashMap<>();
 
 
 
     public TiendaMusica(){
+        this.usuarios=deserializarUsuario();
+
 
     }
+    public  HashMap<String,Usuario> registrarUsuario(Usuario user){
 
-    public void registrarUsuario(Usuario user){
-
-        usuarios = deserializarUsuario();
-        if(validarUsuario(user.getUserName())){
+        if(!validarUsuario(user.getUserName())){
 
             usuarios.put(user.getUserName(),user);
-            serializarUsuario();
+            serializarUsuario(usuarios);
+            usuarios = deserializarUsuario();
+
             System.out.println("Usuario registrado correctamente");
 
         }else {
 
             System.out.println("Usuario ya existe ");
         }
-    }
-    public void serializarUsuario() {
-        try {
-            FileOutputStream fileOut = new FileOutputStream("src\\main\\java\\Percistencia\\usuarios.txt");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(usuarios);
-            out.close();
-            fileOut.close();
-            System.out.println("Usuarios serializados correctamente.");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return usuarios;
     }
 
-    public HashMap<String,Usuario> deserializarUsuario() {
+    public  void serializarUsuario (HashMap<String,Usuario> usuarios){
+
         try {
-            FileInputStream fileIn = new FileInputStream("src\\main\\java\\Percistencia\\usuarios.txt");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            HashMap<String,Usuario>  usuarios = (HashMap<String, Usuario>) in.readObject();
-            in.close();
-            fileIn.close();
-           // System.out.println("Usuarios deserializados correctamente.");
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+            ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("src\\main\\java\\Percistencia\\usuarios.txt"));
+            os.writeObject(usuarios);
+            os.flush();
+            os.close();
+        }catch (IOException e){
+
         }
+
+    }
+    public  HashMap<String,Usuario> deserializarUsuario (){
+
+        HashMap<String, Usuario> usuarios = new HashMap<>();
+        try{
+            ObjectInputStream os = new ObjectInputStream(new FileInputStream("src\\main\\java\\Percistencia\\usuarios.txt"));
+            usuarios=(HashMap<String, Usuario>) os.readObject();
+
+
+        }catch (IOException | ClassNotFoundException e){
+
+        }
+
         return usuarios;
     }
     public boolean validarUsuario(String key){
-        usuarios = deserializarUsuario();
+
 
         return usuarios.containsKey(key);
     }
+    public  void verUsuarios(){
 
+        for (HashMap.Entry<String, Usuario> entry : usuarios.entrySet()) {
+            String clave = entry.getKey();
+            Usuario usuario = entry.getValue();
+            System.out.println(clave + " : " + usuario.toString());
+        }
+    }
 
     //Getter y Setters
     public HashMap<String, Usuario> getUsuarios() {

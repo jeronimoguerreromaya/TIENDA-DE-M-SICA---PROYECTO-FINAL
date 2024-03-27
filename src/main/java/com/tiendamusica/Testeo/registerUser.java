@@ -13,9 +13,20 @@ public class registerUser {
 
         TiendaMusica tienda = new TiendaMusica();
 
-        Usuario user = new Usuario("omi","123","omi@gmail.com");
+        Usuario user1 = new Usuario("juli","123","omi@gmail.com1");
+        Usuario user = new Usuario("omi","1","omi@gmail.com1");
 
         tienda.registrarUsuario(user);
+
+        tienda.verUsuarios();
+
+        HashMap<String, Usuario> usuarios = tienda.getUsuarios();
+
+
+
+
+
+        System.out.println(usuarios.size());
     }
 
 
