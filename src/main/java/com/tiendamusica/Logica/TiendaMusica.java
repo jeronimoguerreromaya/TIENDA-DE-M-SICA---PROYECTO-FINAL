@@ -1,6 +1,7 @@
 package com.tiendamusica.Logica;
 
 import java.io.*;
+import java.nio.file.attribute.UserPrincipal;
 import java.util.HashMap;
 
 public class TiendaMusica {
@@ -12,10 +13,13 @@ public class TiendaMusica {
 
 
     public TiendaMusica(){
+      //Inicializar el mapa de usuarios con los guardados en memeoria
         this.usuarios=deserializarUsuario();
 
 
     }
+
+    //Metodo registrar usuario
     public  HashMap<String,Usuario> registrarUsuario(Usuario user){
 
         if(!validarUsuario(user.getUserName())){
@@ -32,7 +36,7 @@ public class TiendaMusica {
         }
         return usuarios;
     }
-
+    //Metodos  de deserializar y serializar un HasMap de usuarios
     public  void serializarUsuario (HashMap<String,Usuario> usuarios){
 
         try {
@@ -43,7 +47,6 @@ public class TiendaMusica {
         }catch (IOException e){
 
         }
-
     }
     public  HashMap<String,Usuario> deserializarUsuario (){
 
@@ -56,14 +59,30 @@ public class TiendaMusica {
         }catch (IOException | ClassNotFoundException e){
 
         }
-
         return usuarios;
     }
-    public boolean validarUsuario(String key){
 
+    //Valida si los datos ingresados son valido para el inicio de sesion
+    public boolean validarIngreso(String user,String password){
 
-        return usuarios.containsKey(key);
+        if (validarUsuario(user)) {
+            //variable usuario auxiliar
+            Usuario u = usuarios.get(user);
+            //validar contraseña
+            if (u.getContrasena().equals(password)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
+
     }
+
+    //Valida si ya existe un usuario con el mismo username
+    public boolean validarUsuario(String key){return usuarios.containsKey(key);}
+
+    //Imprime a los usuario en consola
     public  void verUsuarios(){
 
         for (HashMap.Entry<String, Usuario> entry : usuarios.entrySet()) {

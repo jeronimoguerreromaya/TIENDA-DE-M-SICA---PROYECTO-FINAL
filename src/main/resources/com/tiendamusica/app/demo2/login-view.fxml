@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="402.0" prefWidth="603.0" style="-fx-background-color: LightBlue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendamusica.app.demo2.LoginController">
+   <children>
+      <Button layoutX="383.0" layoutY="200.0" mnemonicParsing="false" onAction="#ingresarButtonClick" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: Blue;" text="Ingresar" textFill="WHITE" />
+      <Button layoutX="383.0" layoutY="251.0" mnemonicParsing="false" onAction="#registrarseButtonClick" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: Blue;" text="Registrarse" textFill="WHITE" />
+      <TextField fx:id="usuarioText" layoutX="382.0" layoutY="89.0" prefHeight="25.0" prefWidth="149.0" promptText="Usuario" />
+      <PasswordField fx:id="claveText" layoutX="382.0" layoutY="139.0" promptText="Contraseña" />
+      <Pane layoutX="-7.0" layoutY="-1.0" prefHeight="402.0" prefWidth="324.0" style="-fx-background-color: DarkBlue;" />
+   </children>
+</AnchorPane>
