@@ -12,6 +12,9 @@ public class TiendaMusica {
 
 
 
+    private Administrador admin ;
+
+
     public TiendaMusica(){
       //Inicializar el mapa de usuarios con los guardados en memeoria
         this.usuarios=deserializarUsuario();
@@ -82,6 +85,7 @@ public class TiendaMusica {
     //Valida si ya existe un usuario con el mismo username
     public boolean validarUsuario(String key){return usuarios.containsKey(key);}
 
+
     //Imprime a los usuario en consola
     public  void verUsuarios(){
 
@@ -92,6 +96,7 @@ public class TiendaMusica {
         }
     }
 
+
     //Getter y Setters
     public HashMap<String, Usuario> getUsuarios() {
         return usuarios;
@@ -100,7 +105,13 @@ public class TiendaMusica {
         this.usuarios = usuarios;
     }
 
+    public Administrador getAdmin() {
+        return admin = new Administrador();
+    }
 
+    public void setAdmin(Administrador admin) {
+        this.admin = admin;
+    }
 
 
 }

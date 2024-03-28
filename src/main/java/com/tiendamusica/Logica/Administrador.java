@@ -2,11 +2,17 @@ package com.tiendamusica.Logica;
 
 public class Administrador {
     private String userName;
-    private String contraseña;
+    private String password;
 
-    public Administrador(String userName, String contraseña) {
-        this.userName = userName;
-        this.contraseña = contraseña;
+    public Administrador() {
+        this.userName = "admin";
+        this.password = "1";
+    }
+
+    //validar si credenciales de admnistrador
+    public  boolean esAdministrador(String userName,String paswword){
+
+        return this.userName.equals(userName)&&this.password.equals(password);
     }
 
     // Getters y Setters
@@ -19,11 +25,11 @@ public class Administrador {
         this.userName = userName;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

@@ -1,6 +1,7 @@
 package com.tiendamusica.app.demo2;
 
 import com.tiendamusica.Logica.TiendaMusica;
+import com.tiendamusica.Logica.Usuario;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,8 +21,14 @@ public class LoginController {
     private TextField usuarioText;
     @FXML
     private PasswordField claveText;
+    @FXML
+    private TextField newUsuarioText;
+    @FXML
+    private TextField newGmailText;
+    @FXML
+    private PasswordField newPasswordText;
 
-
+    //Accion de inicio de sesion
     public void ingresarButtonClick (){
         myTienda = new TiendaMusica();
 
@@ -29,25 +36,46 @@ public class LoginController {
         String user = usuarioText.getText();
         String password = claveText.getText();
 
-
-        if(myTienda.validarIngreso(user,password)){
+        //Validar que no haya campos vacios
+        if(!user.isEmpty()&&!password.isEmpty()){
+            //Validar usuario
+            if(myTienda.validarIngreso(user,password)){
 
                 redireccionarTiendaMusica();
-                System.out.println("ingreso");
+                System.out.println("ingreso usuario");
+            }else {
+                //Validar administrador
+                if(myTienda.getAdmin().esAdministrador(user,password)){
+                    redireccionarTiendaMusica();
+                    System.out.println("ingreso Administrador");
+                }else{
+                    myAlerta("Datos incorrectos");
+                }
 
-
-
+            }
+            clearALl();
         }else {
-            Alert a = new Alert(Alert.AlertType.WARNING);
-            a.setTitle("Error");
-            a.setContentText("Datos incorrectas");
-            a.showAndWait();
+            myAlerta("No se permiten campos vacios");
         }
-        usuarioText.clear();
-        claveText.clear();
     }
+    //Accion de registrar un nuevo usuario
     public void registrarseButtonClick (){
+        myTienda = new TiendaMusica();
 
+        //variables auxiliares
+        String user = newUsuarioText.getText();
+        String password = newPasswordText.getText();
+        String gmail = newGmailText.getText();
+        //Crear un usuario temporal
+        Usuario newUsuario = new Usuario(user,password,gmail);
+
+        if(!user.isEmpty()&&!password.isEmpty()&&!gmail.isEmpty()){
+            //Registrar usuario
+            myTienda.registrarUsuario(newUsuario);
+            clearALl();
+        }else {
+            myAlerta("No se permiten campos vacios");
+        }
     }
 
     private void redireccionarTiendaMusica()  {
@@ -63,13 +91,24 @@ public class LoginController {
             Stagep.setScene(s);
             Stagep.show();
 
-
         }catch (Exception e){
 
         }
-
-
-
+    }
+    //Mostrar alerta
+    public  void myAlerta(String alerta){
+        Alert a = new Alert(Alert.AlertType.WARNING);
+        a.setTitle("Error");
+        a.setContentText(alerta);
+        a.showAndWait();
+    }
+    //Limpiar todos los campos
+    public void clearALl(){
+        usuarioText.clear();
+        claveText.clear();
+        newUsuarioText.clear();
+        newPasswordText.clear();
+        newGmailText.clear();
     }
 
 }

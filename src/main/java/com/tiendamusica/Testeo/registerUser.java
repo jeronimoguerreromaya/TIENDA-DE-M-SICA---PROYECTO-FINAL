@@ -18,15 +18,7 @@ public class registerUser {
 
         tienda.registrarUsuario(user);
 
-        tienda.verUsuarios();
 
-        HashMap<String, Usuario> usuarios = tienda.getUsuarios();
-
-
-
-
-
-        System.out.println(usuarios.size());
     }
 
 
