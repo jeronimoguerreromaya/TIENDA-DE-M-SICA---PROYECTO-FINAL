@@ -1,7 +1,12 @@
 package com.tiendamusica.Logica;
 
+import com.tiendamusica.myTools.ListaDobleEnlazada;
+
+import java.awt.image.BufferedImage;
 import java.io.*;
+import java.net.URL;
 import java.nio.file.attribute.UserPrincipal;
+import java.util.Date;
 import java.util.HashMap;
 
 public class TiendaMusica {
@@ -9,6 +14,8 @@ public class TiendaMusica {
 
 
     private HashMap<String, Usuario> usuarios = new HashMap<>();
+
+    private Artista artista = new Artista();
 
 
 
@@ -22,6 +29,32 @@ public class TiendaMusica {
 
     }
 
+    public  void crearCancion(Cancion cancion ,Artista artista){
+        if(validarCancion(cancion.getNombre(), cancion.getNombreAlbum())){
+            //agregar codigo a la cancion
+            cancion.setCode(generarCodigo());
+            //Agregar cancion a artista
+        }else{
+            System.out.println("cancion ya exist");
+        }
+
+    }
+    //Genera codigo unico  de una cancin nueva cancion
+    public  String generarCodigo(){
+        //Variablle auxiliar
+        ListaDobleEnlazada<Cancion> l = artista.getCanciones();
+        Boolean flag = false;
+        int codigo = 0;
+
+        while(flag!= true){
+            codigo = (int) (Math.random() * 900000) + 100000;
+
+        }
+
+
+
+        return Integer.toString(codigo);
+    }
     //Metodo registrar usuario
     public  HashMap<String,Usuario> registrarUsuario(Usuario user){
 
@@ -84,7 +117,22 @@ public class TiendaMusica {
 
     //Valida si ya existe un usuario con el mismo username
     public boolean validarUsuario(String key){return usuarios.containsKey(key);}
-
+    //Valida si ya existe un cancion igual
+    public boolean validarCancion(String name, String albun){
+        //Varables auxiliar
+        boolean flag = false;
+        Cancion cancion = new Cancion();
+        ListaDobleEnlazada<Cancion> l = artista.getCanciones();
+        //recorrer Lista
+        for(int i=1; i<=l.getSize(); i++){
+            cancion = l.getPosition(i);
+            //comparar si la cancion existe
+            if (cancion.getNombre().equals(name) && cancion.getNombreAlbum().equals(albun)) {
+                return flag;
+            }
+        }
+        return flag;
+    }
 
     //Imprime a los usuario en consola
     public  void verUsuarios(){

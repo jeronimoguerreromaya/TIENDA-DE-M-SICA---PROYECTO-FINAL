@@ -1,19 +1,22 @@
 package com.tiendamusica.Logica;
 
+import com.tiendamusica.myTools.ListaDobleEnlazada;
+
 public class Artista {
     private String codigo;
     private String nombre;
     private String nacionalidad;
     private Estado estado;
-   // private ListaDoblementeEnlazada<Cancion> canciones;
+   private ListaDobleEnlazada<Cancion> canciones;
 
     public Artista(String codigo, String nombre, String nacionalidad, Estado estado) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.nacionalidad = nacionalidad;
         this.estado = estado;
-        //this.canciones = new ListaDoblementeEnlazada<>();
+        this.canciones = new ListaDobleEnlazada();
     }
+    public Artista(){}
 
     // Getters y Setters
 
@@ -49,13 +52,13 @@ public class Artista {
         this.estado = estado;
     }
 
-    //public ListaDoblementeEnlazada<Cancion> getCanciones() {
-        //return canciones;
-    //}
+    public ListaDobleEnlazada <Cancion> getCanciones() {
+        return canciones;
+    }
 
-    //public void setCanciones(ListaDoblementeEnlazada<Cancion> canciones) {
-        //this.canciones = canciones;
-    //}
+    public void setCanciones(ListaDobleEnlazada <Cancion> canciones) {
+        this.canciones = canciones;
+    }
     public enum Estado{
         Solista, Banda
     }

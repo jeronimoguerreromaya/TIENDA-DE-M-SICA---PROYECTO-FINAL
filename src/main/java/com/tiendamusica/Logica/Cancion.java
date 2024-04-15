@@ -1,10 +1,13 @@
 package com.tiendamusica.Logica;
 
+import com.tiendamusica.myTools.Genero;
+
 import java.awt.image.BufferedImage;
 import java.net.URL;
+import java.util.Comparator;
 import java.util.Date;
 
-public class Cancion {
+public class Cancion implements Comparable<Cancion> {
     private String code;
     private String nombre;
     private String nombreAlbum;
@@ -14,8 +17,7 @@ public class Cancion {
     private Genero genero;
     private URL url;
 
-    public Cancion(String code, String nombre, String nombreAlbum, BufferedImage caratula, Date year, float duracion, Genero genero, URL url) {
-        this.code = code;
+    public Cancion(String nombre, String nombreAlbum, BufferedImage caratula, Date year, float duracion, Genero genero, URL url) {
         this.nombre = nombre;
         this.nombreAlbum = nombreAlbum;
         this.caratula = caratula;
@@ -24,6 +26,7 @@ public class Cancion {
         this.genero = genero;
         this.url = url;
     }
+    public Cancion(){}
 
     // Getters y Setters
 
@@ -90,7 +93,11 @@ public class Cancion {
     public void setUrl(URL url) {
         this.url = url;
     }
-    public enum Genero {
-        RockPop ,Punk ,Reggaeton ,Electrónica
+
+    @Override
+    public int compareTo(Cancion o) {
+        return 0;
     }
+
+
 }
