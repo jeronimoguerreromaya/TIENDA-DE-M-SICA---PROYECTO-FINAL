@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="476.0" prefWidth="592.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendamusica.app.demo2.AdminView">
+   <children>
+      <Label layoutX="33.0" layoutY="26.0" prefHeight="32.0" prefWidth="126.0" text="Crear Artista">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField layoutX="23.0" layoutY="134.0" promptText="Nomrbre" />
+      <TextField layoutX="23.0" layoutY="175.0" promptText="Nacionalidad" />
+      <ComboBox layoutX="22.0" layoutY="223.0" prefWidth="150.0" promptText="Estado" />
+      <Button layoutX="40.0" layoutY="281.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" text="Crear" />
+      <Label layoutX="280.0" layoutY="26.0" text="Agegar Cancion">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField layoutX="23.0" layoutY="87.0" promptText="Codigo" />
+      <TextField layoutX="245.0" layoutY="87.0" promptText="Artista" />
+      <TextField layoutX="432.0" layoutY="87.0" promptText="Nombre Cancion" />
+      <TextField layoutX="245.0" layoutY="134.0" promptText="Nombre Albun" />
+      <TextField layoutX="432.0" layoutY="134.0" promptText="Duracion" />
+      <DatePicker layoutX="245.0" layoutY="226.0" prefHeight="25.0" prefWidth="149.0" promptText="Fecha" />
+      <TextField layoutX="245.0" layoutY="175.0" promptText="Genero" />
+      <TextField layoutX="432.0" layoutY="175.0" promptText="URL" />
+      <TextField layoutX="432.0" layoutY="223.0" promptText="Caratula" />
+      <Button layoutX="258.0" layoutY="346.0" mnemonicParsing="false" text="Cargar Cancion" />
+      <Button layoutX="258.0" layoutY="294.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" text="Agregar" />
+   </children>
+</AnchorPane>
