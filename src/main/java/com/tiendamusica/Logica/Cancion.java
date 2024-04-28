@@ -3,11 +3,12 @@ package com.tiendamusica.Logica;
 import com.tiendamusica.myTools.Genero;
 
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.Comparator;
 import java.util.Date;
 
-public class Cancion implements Comparable<Cancion> {
+public class Cancion implements Comparable<Cancion>, Serializable {
     private String code;
     private String nombre;
     private String nombreAlbum;

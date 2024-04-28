@@ -1,5 +1,6 @@
 package com.tiendamusica.Logica;
 
+import com.tiendamusica.myTools.BinaryTree;
 import com.tiendamusica.myTools.ListaDobleEnlazada;
 
 import java.awt.image.BufferedImage;
@@ -14,8 +15,8 @@ public class TiendaMusica {
 
 
     private HashMap<String, Usuario> usuarios = new HashMap<>();
+    private  BinaryTree<Artista> artistas = new BinaryTree<>();
 
-    private Artista artista = new Artista();
 
 
 
@@ -25,14 +26,28 @@ public class TiendaMusica {
     public TiendaMusica(){
       //Inicializar el mapa de usuarios con los guardados en memeoria
         this.usuarios=deserializarUsuario();
+        this.artistas = deserializarArtista();
 
 
     }
+    public boolean crearArtista (Artista artista){
 
+        BinaryTree<Artista> listaArt = deserializarArtista();
+
+        if (listaArt.search(artista)) {
+            // Si el artista ya existe en el árbol, no se agrega
+            return false;
+        } else {
+            // Si el artista no existe, se agrega al árbol
+            listaArt.insert(artista);
+            serializarArtista(listaArt);
+            return true;
+        }
+    }
     public  void crearCancion(Cancion cancion ,Artista artista){
         if(validarCancion(cancion.getNombre(), cancion.getNombreAlbum())){
             //agregar codigo a la cancion
-            cancion.setCode(generarCodigo());
+          //  cancion.setCode(generarCodigo());
             //Agregar cancion a artista
         }else{
             System.out.println("cancion ya exist");
@@ -40,20 +55,8 @@ public class TiendaMusica {
 
     }
     //Genera codigo unico  de una cancin nueva cancion
-    public  String generarCodigo(){
-        //Variablle auxiliar
-        ListaDobleEnlazada<Cancion> l = artista.getCanciones();
-        Boolean flag = false;
-        int codigo = 0;
+    public  void generarCodigo(){
 
-        while(flag!= true){
-            codigo = (int) (Math.random() * 900000) + 100000;
-
-        }
-
-
-
-        return Integer.toString(codigo);
     }
     //Metodo registrar usuario
     public  HashMap<String,Usuario> registrarUsuario(Usuario user){
@@ -72,7 +75,7 @@ public class TiendaMusica {
         }
         return usuarios;
     }
-    //Metodos  de deserializar y serializar un HasMap de usuarios
+    //Metodos  de deserializar y serializar
     public  void serializarUsuario (HashMap<String,Usuario> usuarios){
 
         try {
@@ -96,6 +99,29 @@ public class TiendaMusica {
 
         }
         return usuarios;
+    }public  void serializarArtista (BinaryTree<Artista> artistas){
+
+        try {
+            ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("src\\main\\java\\Percistencia\\Artistas.txt"));
+            os.writeObject(artistas);
+            os.flush();
+            os.close();
+        }catch (IOException e){
+
+        }
+    }
+    public  BinaryTree<Artista> deserializarArtista (){
+
+        BinaryTree<Artista> artistas = new BinaryTree<>();
+        try{
+            ObjectInputStream os = new ObjectInputStream(new FileInputStream("src\\main\\java\\Percistencia\\Artistas.txt"));
+            artistas=(BinaryTree<Artista>) os.readObject();
+
+
+        }catch (IOException | ClassNotFoundException e){
+
+        }
+        return artistas;
     }
 
     //Valida si los datos ingresados son valido para el inicio de sesion
@@ -122,7 +148,7 @@ public class TiendaMusica {
         //Varables auxiliar
         boolean flag = false;
         Cancion cancion = new Cancion();
-        ListaDobleEnlazada<Cancion> l = artista.getCanciones();
+        ListaDobleEnlazada<Cancion> l = null;
         //recorrer Lista
         for(int i=1; i<=l.getSize(); i++){
             cancion = l.getPosition(i);

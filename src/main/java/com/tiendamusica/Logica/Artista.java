@@ -1,8 +1,11 @@
 package com.tiendamusica.Logica;
 
+import com.tiendamusica.myTools.Estado;
 import com.tiendamusica.myTools.ListaDobleEnlazada;
 
-public class Artista {
+import java.io.Serializable;
+
+public class Artista implements Serializable, Comparable<Artista> {
     private String codigo;
     private String nombre;
     private String nacionalidad;
@@ -59,7 +62,12 @@ public class Artista {
     public void setCanciones(ListaDobleEnlazada <Cancion> canciones) {
         this.canciones = canciones;
     }
-    public enum Estado{
-        Solista, Banda
+
+    @Override
+    public int compareTo(Artista o) {
+        return nombre.compareTo(o.nombre);
+
     }
+
+
 }

@@ -2,9 +2,10 @@ package com.tiendamusica.myTools;
 
 import javafx.scene.control.PasswordField;
 
+import java.io.Serializable;
 import java.util.Iterator;
 
-public class ListaDobleEnlazada<T  extends Comparable<T>> implements Iterable<T> {
+public class ListaDobleEnlazada<T  extends Comparable<T> & Serializable> implements Iterable<T> {
     private Nodo<T> cabeza;
     private Nodo<T> cola;
     private int size;

@@ -1,7 +1,12 @@
 package com.tiendamusica.myTools;
 
-    public class ListaCircular<T> {
-        // Clase interna Nodo
+import java.io.Serializable;
+import java.util.Iterator;
+
+public class ListaCircular<T  extends Comparable<T> & Serializable> implements Iterable<T> {
+
+
+    // Clase interna Nodo
         private class Nodo {
             T data;
             Nodo next;
@@ -107,4 +112,39 @@ package com.tiendamusica.myTools;
         public int tamaño() {
             return size;
         }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new ListaCircularIterator();
+    }
+
+    private class ListaCircularIterator implements Iterator<T> {
+        private Nodo current;
+
+        public ListaCircularIterator() {
+            current = head;
+        }
+
+        @Override
+        public boolean hasNext() {
+            if (head == null) {
+                return false;
+            }
+            if (current.next == head) {
+                return false;
+            }
+            return true;
+        }
+
+        @Override
+        public T next() {
+            if (!hasNext()) {
+                System.out.println("No hay más elementos en la lista");
+                return null;
+            }
+            T data = current.data;
+            current = current.next;
+            return data;
+        }
+    }
 }

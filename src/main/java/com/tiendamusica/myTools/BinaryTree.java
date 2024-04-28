@@ -1,14 +1,16 @@
 package com.tiendamusica.myTools;
 
-class BinaryTree<T extends Comparable<T>> {
+import java.io.Serializable;
+
+public class BinaryTree<T extends Comparable<T> & Serializable > {
     Node<T> root;
 
-    BinaryTree() {
+    public BinaryTree() {
         root = null;
     }
 
     // Insertar un nuevo nodo en el árbol
-    void insert(T data) {
+    public void insert(T data) {
         root = insertRecursive(root, data);
     }
 
@@ -27,7 +29,7 @@ class BinaryTree<T extends Comparable<T>> {
     }
 
     // Búsqueda de un elemento en el árbol
-    boolean search(T data) {
+    public boolean search(T data) {
         return searchRecursive(root, data);
     }
 
@@ -44,7 +46,7 @@ class BinaryTree<T extends Comparable<T>> {
     }
 
     // Eliminar un elemento del árbol
-    void delete(T data) {
+    public void delete(T data) {
         root = deleteRecursive(root, data);
     }
 
@@ -79,7 +81,7 @@ class BinaryTree<T extends Comparable<T>> {
     }
 
     // Imprimir todos los elementos del árbol en orden
-    void printInOrder() {
+    public   void printInOrder() {
         printInOrderRecursive(root);
     }
 
