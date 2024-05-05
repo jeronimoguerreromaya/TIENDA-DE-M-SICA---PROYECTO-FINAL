@@ -1,10 +1,11 @@
 package com.tiendamusica.Logica;
 
-public class Administrador {
+public class Administrador extends Person {
     private String userName;
     private String password;
 
     public Administrador() {
+        super();
         this.userName = "admin";
         this.password = "1";
     }

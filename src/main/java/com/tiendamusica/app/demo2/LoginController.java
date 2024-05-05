@@ -1,5 +1,7 @@
 package com.tiendamusica.app.demo2;
 
+import com.tiendamusica.Logica.Administrador;
+import com.tiendamusica.Logica.Person;
 import com.tiendamusica.Logica.TiendaMusica;
 import com.tiendamusica.Logica.Usuario;
 import javafx.fxml.FXML;
@@ -29,7 +31,7 @@ public class LoginController {
     private PasswordField newPasswordText;
 
     //Accion de inicio de sesion
-    public void ingresarButtonClick (){
+    public void ingresarButtonClick ()throws IOException{
         myTienda = new TiendaMusica();
 
         //variables auxiliares
@@ -40,6 +42,7 @@ public class LoginController {
         if(!user.isEmpty()&&!password.isEmpty()){
             //Validar usuario
             if(myTienda.validarIngreso(user,password)){
+
 
                 redireccionarTiendaMusica();
                 System.out.println("ingreso usuario");
@@ -78,23 +81,33 @@ public class LoginController {
         }
     }
 
-    private void redireccionarTiendaMusica()  {
+    private void redireccionarTiendaMusica() throws IOException {
 
-        try {
-            Stage Stagep = new Stage();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("TiendaMusica-view.fxml"));
+        Stage Stagep = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("TiendaMusica-view.fxml"));
 
-            Parent p = loader.load();
-            Scene s = new Scene(p, 1500, 800);
+        Parent p = loader.load();
+;        Scene s = new Scene(p, 350, 450);
 
-            Stagep.setScene(s);
-            Stagep.show();
+        Stagep.setScene(s);
+        Stagep.show();
 
-        }catch (Exception e){
+        TiendaMusicaController tiendaMusicaController = loader.getController();
 
+        // Pasar la información de si es administrador o usuario
+        String user = usuarioText.getText();
+        String password = claveText.getText();
+        if (myTienda.getAdmin().esAdministrador(user, password)) {
+            tiendaMusicaController.setEsAdministrador(true);
+        } else {
+            tiendaMusicaController.setEsUsuario(true);
         }
+
+        closed();
+
     }
+
     //Mostrar alerta
     public  void myAlerta(String alerta){
         Alert a = new Alert(Alert.AlertType.WARNING);
@@ -109,6 +122,11 @@ public class LoginController {
         newUsuarioText.clear();
         newPasswordText.clear();
         newGmailText.clear();
+    }
+
+    public void closed(){
+        Stage currentStage = (Stage) usuarioText.getScene().getWindow();
+        currentStage.close();
     }
 
 }

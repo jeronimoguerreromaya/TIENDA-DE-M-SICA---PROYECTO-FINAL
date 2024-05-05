@@ -5,7 +5,8 @@ package com.tiendamusica.Logica;
 
 import java.io.Serializable;
 
-public class Usuario implements Serializable {
+public class Usuario extends Person implements Serializable {
+
     private String userName;
     private String contrasena;
     private String gmail;
@@ -16,6 +17,7 @@ public class Usuario implements Serializable {
 
     }
     public Usuario(String userName, String contrasena, String gmail) {
+        super();
         this.userName = userName;
         this.contrasena = contrasena;
         this.gmail = gmail;
