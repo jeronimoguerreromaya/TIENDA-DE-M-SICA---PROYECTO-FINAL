@@ -2,7 +2,7 @@ package com.tiendamusica.myTools;
 
 import java.io.Serializable;
 
-public class BinaryTree<T extends Comparable<T> & Serializable > {
+public class BinaryTree<T extends Comparable<T> & Serializable > implements Serializable  {
     Node<T> root;
 
     public BinaryTree() {
@@ -92,7 +92,7 @@ public class BinaryTree<T extends Comparable<T> & Serializable > {
             printInOrderRecursive(node.right);
         }
     }
-}class Node<T extends Comparable<T>> {
+}class Node<T extends Comparable<T>> implements Serializable  {
     T data;
     Node<T> left, right;
 

@@ -12,20 +12,20 @@ public class Cancion implements Comparable<Cancion>, Serializable {
     private String code;
     private String nombre;
     private String nombreAlbum;
-    private BufferedImage caratula;
+  //  private BufferedImage caratula;
     private Date year;
     private float duracion;
     private Genero genero;
-    private URL url;
+    private String url;
 
     public Cancion(String nombre, String nombreAlbum, BufferedImage caratula, Date year, float duracion, Genero genero, URL url) {
         this.nombre = nombre;
         this.nombreAlbum = nombreAlbum;
-        this.caratula = caratula;
+      //  this.caratula = caratula;
         this.year = year;
         this.duracion = duracion;
         this.genero = genero;
-        this.url = url;
+       // this.url = url;
     }
     public Cancion(){}
 
@@ -55,13 +55,13 @@ public class Cancion implements Comparable<Cancion>, Serializable {
         this.nombreAlbum = nombreAlbum;
     }
 
-    public BufferedImage getCaratula() {
-        return caratula;
-    }
+    //public BufferedImage getCaratula() {
+     //   return caratula;
+   // }
 
-    public void setCaratula(BufferedImage caratula) {
-        this.caratula = caratula;
-    }
+   // public void setCaratula(BufferedImage caratula) {
+     //  this.caratula = caratula;
+   // }
 
     public Date getYear() {
         return year;
@@ -87,13 +87,13 @@ public class Cancion implements Comparable<Cancion>, Serializable {
         this.genero = genero;
     }
 
-    public URL getUrl() {
-        return url;
-    }
+    //public URL getUrl() {
+      //  return url;
+  //  }
 
-    public void setUrl(URL url) {
-        this.url = url;
-    }
+   // public void setUrl(URL url) {
+    //    this.url = url;
+    //}
 
     @Override
     public int compareTo(Cancion o) {

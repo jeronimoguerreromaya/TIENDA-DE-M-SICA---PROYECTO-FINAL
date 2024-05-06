@@ -17,14 +17,12 @@ public class resgitrarArtista {
         Artista nightwish = new Artista("0000", "Nightwish", "Finlandia", Estado.Banda);
         Artista wizKhalifa = new Artista("0001", "Wiz Khalifa", "Estados Unidos", Estado.Solista);
 
-       // boolean b = my.crearArtista(wizKhalifa);
+      //  my.crearArtista(nightwish);// my.crearArtista(nightwish);
 
-        a = my.deserializarArtista();
 
-        a.printInOrder();
 
-        //System.out.println(b);
-
+        //a = my.getArtistas();
+       // a.printInOrder();
 
     }
 }

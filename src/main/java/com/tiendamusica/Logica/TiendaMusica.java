@@ -9,12 +9,18 @@ import java.net.URL;
 import java.nio.file.attribute.UserPrincipal;
 import java.util.Date;
 import java.util.HashMap;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 
 public class TiendaMusica {
 
 
 
     private HashMap<String, Usuario> usuarios = new HashMap<>();
+
+
+
     private  BinaryTree<Artista> artistas = new BinaryTree<>();
 
 
@@ -26,23 +32,24 @@ public class TiendaMusica {
     public TiendaMusica(){
       //Inicializar el mapa de usuarios con los guardados en memeoria
         this.usuarios=deserializarUsuario();
-        this.artistas = deserializarArtista();
-
-
+        this.artistas = deserializeBinaryTree("src\\main\\java\\Percistencia\\Artistas.txt");
     }
-    public boolean crearArtista (Artista artista){
+    public BinaryTree<Artista> crearArtista (Artista artista){
 
-        BinaryTree<Artista> listaArt = deserializarArtista();
 
-        if (listaArt.search(artista)) {
+
+        if (artistas.search(artista)) {
             // Si el artista ya existe en el árbol, no se agrega
-            return false;
+            System.out.println("Usuario ya existe");
+
         } else {
             // Si el artista no existe, se agrega al árbol
-            listaArt.insert(artista);
-            serializarArtista(listaArt);
-            return true;
+            artistas.insert(artista);
+            serializarArtista(artistas);
+            System.out.println("Usuario agregado");
+
         }
+        return  artistas;
     }
     public  void crearCancion(Cancion cancion ,Artista artista){
         if(validarCancion(cancion.getNombre(), cancion.getNombreAlbum())){
@@ -102,7 +109,7 @@ public class TiendaMusica {
     }public  void serializarArtista (BinaryTree<Artista> artistas){
 
         try {
-            ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("src\\main\\java\\Percistencia\\Artistas.txt"));
+            ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("src\\main\\java\\Percistencia\\Artistas1.txt"));
             os.writeObject(artistas);
             os.flush();
             os.close();
@@ -110,18 +117,34 @@ public class TiendaMusica {
 
         }
     }
-    public  BinaryTree<Artista> deserializarArtista (){
 
-        BinaryTree<Artista> artistas = new BinaryTree<>();
-        try{
-            ObjectInputStream os = new ObjectInputStream(new FileInputStream("src\\main\\java\\Percistencia\\Artistas.txt"));
-            artistas=(BinaryTree<Artista>) os.readObject();
-
-
-        }catch (IOException | ClassNotFoundException e){
-
+    public void serializeBinaryTree(BinaryTree<Artista> tree, String filename) {
+        try (FileOutputStream fileOutputStream = new FileOutputStream(filename);
+             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
+            // Escribe el objeto BinaryTree en el archivo
+            objectOutputStream.writeObject(tree);
+        } catch (IOException e) {
+            // Manejar la excepción IOException
+            System.err.println("Error al serializar el árbol: " + e.getMessage());
+            // Puedes agregar cualquier otra lógica de manejo de errores aquí
         }
-        return artistas;
+    }
+    public BinaryTree<Artista> deserializeBinaryTree(String filename) {
+        BinaryTree<Artista> tree = null;
+        try (FileInputStream fileInputStream = new FileInputStream(filename);
+             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
+            // Lee el objeto BinaryTree desde el archivo
+            tree = (BinaryTree<Artista>) objectInputStream.readObject();
+        } catch (IOException e) {
+            // Manejar la excepción IOException
+            System.err.println("Error al deserializar el árbol: " + e.getMessage());
+            // Puedes agregar cualquier otra lógica de manejo de errores aquí
+        } catch (ClassNotFoundException e) {
+            // Manejar la excepción ClassNotFoundException
+            System.err.println("Error de clase no encontrada durante la deserialización: " + e.getMessage());
+            // Puedes agregar cualquier otra lógica de manejo de errores aquí
+        }
+        return tree;
     }
 
     //Valida si los datos ingresados son valido para el inicio de sesion
@@ -187,5 +210,8 @@ public class TiendaMusica {
         this.admin = admin;
     }
 
+    public BinaryTree<Artista> getArtistas() {
+        return artistas;
+    }
 
 }

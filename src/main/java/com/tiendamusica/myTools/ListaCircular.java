@@ -3,11 +3,11 @@ package com.tiendamusica.myTools;
 import java.io.Serializable;
 import java.util.Iterator;
 
-public class ListaCircular<T  extends Comparable<T> & Serializable> implements Iterable<T> {
+public class ListaCircular<T  extends Comparable<T> & Serializable> implements Iterable<T>, Serializable {
 
 
     // Clase interna Nodo
-        private class Nodo {
+        private class Nodo implements  Serializable{
             T data;
             Nodo next;
 

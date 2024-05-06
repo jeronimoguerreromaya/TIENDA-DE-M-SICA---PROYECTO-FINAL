@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="476.0" prefWidth="592.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendamusica.app.demo2.AdminController">
+<AnchorPane prefHeight="476.0" prefWidth="592.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendamusica.app.demo2.AdminController">
    <children>
       <Label layoutX="33.0" layoutY="26.0" prefHeight="32.0" prefWidth="126.0" text="Crear Artista">
          <font>
@@ -21,15 +25,14 @@
          </font>
       </Label>
       <TextField fx:id="codigo" layoutX="23.0" layoutY="87.0" promptText="Codigo" />
-      <TextField layoutX="245.0" layoutY="87.0" promptText="Artista" />
-      <TextField layoutX="432.0" layoutY="87.0" promptText="Nombre Cancion" />
-      <TextField layoutX="245.0" layoutY="134.0" promptText="Nombre Albun" />
-      <TextField layoutX="432.0" layoutY="134.0" promptText="Duracion" />
-      <DatePicker layoutX="245.0" layoutY="226.0" prefHeight="25.0" prefWidth="149.0" promptText="Fecha" />
-      <TextField layoutX="245.0" layoutY="175.0" promptText="Genero" />
-      <TextField layoutX="432.0" layoutY="175.0" promptText="URL" />
-      <TextField layoutX="432.0" layoutY="223.0" promptText="Caratula" />
+      <TextField fx:id="artista" layoutX="245.0" layoutY="87.0" promptText="Artista" />
+      <TextField fx:id="nombreCancion" layoutX="432.0" layoutY="87.0" promptText="Nombre Cancion" />
+      <TextField fx:id="nombreAlbun" layoutX="245.0" layoutY="134.0" promptText="Nombre Albun" />
+      <TextField fx:id="duracion" layoutX="432.0" layoutY="134.0" promptText="Duracion" />
+      <DatePicker fx:id="fecha" layoutX="245.0" layoutY="226.0" prefHeight="25.0" prefWidth="149.0" promptText="Fecha" />
+      <TextField fx:id="genero" layoutX="245.0" layoutY="175.0" promptText="Genero" />
+      <TextField fx:id="url" layoutX="432.0" layoutY="175.0" promptText="URL" />
       <Button layoutX="258.0" layoutY="346.0" mnemonicParsing="false" text="Cargar Cancion" />
-      <Button layoutX="258.0" layoutY="294.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" text="Agregar" />
+      <Button layoutX="258.0" layoutY="294.0" mnemonicParsing="false" onAction="#agregarCancionButtonClick" prefHeight="25.0" prefWidth="97.0" text="Agregar" />
    </children>
 </AnchorPane>

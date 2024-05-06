@@ -5,7 +5,7 @@ import javafx.scene.control.PasswordField;
 import java.io.Serializable;
 import java.util.Iterator;
 
-public class ListaDobleEnlazada<T  extends Comparable<T> & Serializable> implements Iterable<T> {
+public class ListaDobleEnlazada<T  extends Comparable<T> & Serializable> implements Iterable<T> , Serializable {
     private Nodo<T> cabeza;
     private Nodo<T> cola;
     private int size;
@@ -17,7 +17,7 @@ public class ListaDobleEnlazada<T  extends Comparable<T> & Serializable> impleme
     }
 
 
-    class Nodo<T> {
+    class Nodo<T> implements  Serializable{
         T dato;
         Nodo<T> siguiente;
         Nodo<T> anterior;
