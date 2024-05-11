@@ -32,7 +32,7 @@ public class TiendaMusica {
     public TiendaMusica(){
       //Inicializar el mapa de usuarios con los guardados en memeoria
         this.usuarios=deserializarUsuario();
-        this.artistas = deserializeBinaryTree("src\\main\\java\\Percistencia\\Artistas.txt");
+        this.artistas = deserializeBinaryTree();
     }
     public BinaryTree<Artista> crearArtista (Artista artista){
 
@@ -40,13 +40,13 @@ public class TiendaMusica {
 
         if (artistas.search(artista)) {
             // Si el artista ya existe en el árbol, no se agrega
-            System.out.println("Usuario ya existe");
+            System.out.println("Artista ya existe");
 
         } else {
             // Si el artista no existe, se agrega al árbol
             artistas.insert(artista);
-            serializarArtista(artistas);
-            System.out.println("Usuario agregado");
+            serializeBinaryTree(artistas);
+            System.out.println("Artista agregado");
 
         }
         return  artistas;
@@ -118,8 +118,8 @@ public class TiendaMusica {
         }
     }
 
-    public void serializeBinaryTree(BinaryTree<Artista> tree, String filename) {
-        try (FileOutputStream fileOutputStream = new FileOutputStream(filename);
+    public void serializeBinaryTree(BinaryTree<Artista> tree) {
+        try (FileOutputStream fileOutputStream = new FileOutputStream("src\\main\\java\\Percistencia\\ArbolArt1.txt");
              ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
             // Escribe el objeto BinaryTree en el archivo
             objectOutputStream.writeObject(tree);
@@ -129,9 +129,9 @@ public class TiendaMusica {
             // Puedes agregar cualquier otra lógica de manejo de errores aquí
         }
     }
-    public BinaryTree<Artista> deserializeBinaryTree(String filename) {
-        BinaryTree<Artista> tree = null;
-        try (FileInputStream fileInputStream = new FileInputStream(filename);
+    public BinaryTree<Artista> deserializeBinaryTree() {
+        BinaryTree<Artista> tree = new BinaryTree<>();
+        try (FileInputStream fileInputStream = new FileInputStream("src\\main\\java\\Percistencia\\ArbolArt1.txt");
              ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
             // Lee el objeto BinaryTree desde el archivo
             tree = (BinaryTree<Artista>) objectInputStream.readObject();
@@ -211,7 +211,7 @@ public class TiendaMusica {
     }
 
     public BinaryTree<Artista> getArtistas() {
-        return artistas;
+        return deserializeBinaryTree();
     }
 
 }

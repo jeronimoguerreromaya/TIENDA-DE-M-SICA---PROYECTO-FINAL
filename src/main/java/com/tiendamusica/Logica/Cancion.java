@@ -12,11 +12,11 @@ public class Cancion implements Comparable<Cancion>, Serializable {
     private String code;
     private String nombre;
     private String nombreAlbum;
-  //  private BufferedImage caratula;
+  // private BufferedImage caratula;
     private Date year;
     private float duracion;
     private Genero genero;
-    private String url;
+   // private URL url;
 
     public Cancion(String nombre, String nombreAlbum, BufferedImage caratula, Date year, float duracion, Genero genero, URL url) {
         this.nombre = nombre;

@@ -1,5 +1,6 @@
 package com.tiendamusica.app.demo2;
 
+import com.tiendamusica.Logica.Artista;
 import com.tiendamusica.Logica.TiendaMusica;
 import com.tiendamusica.myTools.Estado;
 import javafx.fxml.FXML;
@@ -9,7 +10,7 @@ import javafx.scene.control.Alert.AlertType;
 import javax.swing.*;
 
 public class AdminController {
-    TiendaMusica myTienda = new TiendaMusica();
+    TiendaMusica myTienda ;
     @FXML
     private TextField codigo;
     @FXML
@@ -50,14 +51,19 @@ public class AdminController {
             myAlerta("No se permiten campos vacíos. Por favor, completa todos los campos antes de continuar.");
 
         } else {
-
+            myTienda = new TiendaMusica();
             String codigoArtista = codigo.getText();
             String nombreArtista = nombre.getText();
             String nacionalidadArtista = nacionalidad.getText();
             Estado estadoArtista = estado.getValue();
 
-            //Implementar metodo de crear artista en logica de la tienda
-            myTienda.crearArtista(null);
+            Artista artista1 = new Artista();
+                artista1.setNombre(nombreArtista);
+                artista1.setCodigo(codigoArtista);
+                artista1.setEstado(estadoArtista);
+                artista1.setNacionalidad(nacionalidadArtista);
+
+            myTienda.crearArtista(artista1);
 
             clearAllFields();
 
