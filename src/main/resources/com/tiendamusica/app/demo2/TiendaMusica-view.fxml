@@ -1,23 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="472.0" prefWidth="333.0" style="-fx-background-color: DarkBlue;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendamusica.app.demo2.TiendaMusicaController">
+<AnchorPane prefHeight="402.0" prefWidth="608.0" style="-fx-background-color: DarkBlue;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendamusica.app.demo2.TiendaMusicaController">
    <children>
-      <TableView layoutX="8.0" layoutY="170.0" prefHeight="200.0" prefWidth="320.0" style="-fx-background-color: LightBlue;">
-        <columns>
-          <TableColumn prefWidth="119.0" text="Cancion" />
-            <TableColumn prefWidth="101.0" text="Artista" />
-          <TableColumn prefWidth="99.0" text="Duracion" />
-        </columns>
-      </TableView>
-      <Button layoutX="210.0" layoutY="24.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: LightBlue;" text="Buscar" />
-      <TextField layoutX="59.0" layoutY="24.0" style="-fx-background-color: LightBlue;" />
-      <Button layoutX="59.0" layoutY="63.0" mnemonicParsing="false" onAction="#MisCancionesButtonClick" prefHeight="25.0" prefWidth="219.0" style="-fx-background-color: LightBlue;" text="Mis Canciones" />
-      <Button layoutX="132.0" layoutY="380.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="72.0" style="-fx-background-color: LightBlue;" text="Play" />
-      <Button layoutX="59.0" layoutY="115.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: LightBlue;" text="Eliminar" />
-      <Button layoutX="132.0" layoutY="115.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: LightBlue;" text="Agregar" />
-      <Button layoutX="208.0" layoutY="115.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" style="-fx-background-color: LightBlue;" text="Ordenar" />
+       <AnchorPane fx:id="panelDerecho" prefHeight="398.0" prefWidth="425.0">
+           <children>
+               <AnchorPane fx:id="panelFormulario" layoutX="175.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="425.0" />
+           </children>
+       </AnchorPane>
+       <AnchorPane fx:id="panelIzquierdo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="175.0" style="-fx-border-color: #FFFFFF; -fx-border-width: 0px 2px 0px 0px; -fx-background-color: LightBlue;">
+           <children>
+               <Button fx:id="btnFav" layoutX="2.0" layoutY="147.0" mnemonicParsing="false" onAction="#showFav" prefHeight="45.0" prefWidth="172.0" style="-fx-background-color: #576A8B; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #FFFFFF;" text="Favoritas" textFill="WHITE" />
+               <Button fx:id="btnBuscador" layoutX="2.0" layoutY="192.0" mnemonicParsing="false" onAction="#showBuscador" prefHeight="45.0" prefWidth="172.0" style="-fx-border-color: #FFFFFF; -fx-border-width: 0px 0px 2px 0px; -fx-background-color: #576A8B;" text="Buscador" textFill="WHITE" />
+               <Button fx:id="btnAgregar" layoutX="2.0" layoutY="238.0" mnemonicParsing="false" onAction="#showAgregar" prefHeight="45.0" prefWidth="172.0" style="-fx-border-color: #FFFFFF; -fx-border-width: 0px 0px 2px 0px; -fx-background-color: #576A8B;" text="Agregar" textFill="WHITE" />
+               <Button fx:id="btnMisCanciones" layoutX="2.0" layoutY="102.0" mnemonicParsing="false" onAction="#showMisCanciones" prefHeight="45.0" prefWidth="172.0" style="-fx-border-color: #FFFFFF; -fx-border-width: 0px 0px 2px 0px; -fx-background-color: #576A8B;" text="Mis canciones" textFill="WHITE" />
+               <Button fx:id="btnEliminar" layoutX="2.0" layoutY="284.0" mnemonicParsing="false" onAction="#showEliminar" prefHeight="45.0" prefWidth="172.0" style="-fx-border-color: #FFFFFF; -fx-border-width: 0px 0px 2px 0px; -fx-background-color: #576A8B;" text="Eliminar" textFill="WHITE" />
+               <Label layoutX="73.0" layoutY="25.0" prefHeight="32.0" prefWidth="83.0" text="TIENDA" textFill="WHITE">
+                   <font>
+                       <Font name="Bookman Old Style Bold" size="15.0" />
+                   </font>
+               </Label>
+               <Label layoutX="88.0" layoutY="41.0" prefHeight="45.0" prefWidth="72.0" text="STORIFY" textAlignment="RIGHT" textFill="WHITE">
+                   <font>
+                       <Font name="Arial Bold" size="15.0" />
+                   </font>
+               </Label>
+            <ImageView fitHeight="59.0" fitWidth="60.0" layoutX="11.0" layoutY="28.0">
+               <image>
+                  <Image url="@../image/musica.png" />
+               </image>
+            </ImageView>
+           </children>
+       </AnchorPane>
+
    </children>
 </AnchorPane>

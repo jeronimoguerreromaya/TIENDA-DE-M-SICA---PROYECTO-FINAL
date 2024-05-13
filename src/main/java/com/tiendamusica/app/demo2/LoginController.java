@@ -42,8 +42,6 @@ public class LoginController {
         if(!user.isEmpty()&&!password.isEmpty()){
             //Validar usuario
             if(myTienda.validarIngreso(user,password)){
-
-
                 redireccionarTiendaMusica();
                 System.out.println("ingreso usuario");
             }else {
@@ -54,7 +52,6 @@ public class LoginController {
                 }else{
                     myAlerta("Datos incorrectos");
                 }
-
             }
             clearALl();
         }else {
@@ -86,9 +83,8 @@ public class LoginController {
         Stage Stagep = new Stage();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("TiendaMusica-view.fxml"));
-
         Parent p = loader.load();
-;        Scene s = new Scene(p, 350, 450);
+        Scene s = new Scene(p, 608, 402);
 
         Stagep.setScene(s);
         Stagep.show();
