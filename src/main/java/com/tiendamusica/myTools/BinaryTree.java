@@ -70,6 +70,43 @@ public class BinaryTree<T extends Comparable<T> & Serializable > implements Seri
 
         return node;
     }
+    // Obtener un elemento del árbol
+    public T ObtenerElemento(T data) {
+        return ObtenerElementoRecursivo(root, data);
+    }
+
+    private T ObtenerElementoRecursivo(Node<T> node, T data) {
+        if (node == null) {
+            return null; // El elemento no se encuentra en el árbol
+        }
+
+        if (data.compareTo(node.data) == 0) {
+            return node.data; // Se encontró el elemento
+        } else if (data.compareTo(node.data) < 0) {
+            return ObtenerElementoRecursivo(node.left, data); // Buscar en el subárbol izquierdo
+        } else {
+            return ObtenerElementoRecursivo(node.right, data); // Buscar en el subárbol derecho
+        }
+    }
+    // Reemplazar un elemento del árbol
+    public boolean RemplazarElemento(T oldData,T newData) {
+        return RemplazarElementoRecursivo(root, oldData, newData);
+    }
+
+    private boolean RemplazarElementoRecursivo(Node<T> node, T oldData, T newData) {
+        if (node == null) {
+            return false; // El elemento no se encuentra en el árbol
+        }
+
+        if (oldData.compareTo(node.data) == 0) {
+            node.data = newData; // Reemplazar el elemento
+            return true; // Se reemplazó el elemento
+        } else if (oldData.compareTo(node.data) < 0) {
+            return RemplazarElementoRecursivo(node.left, oldData, newData); // Buscar en el subárbol izquierdo
+        } else {
+            return RemplazarElementoRecursivo(node.right, oldData, newData); // Buscar en el subárbol derecho
+        }
+    }
 
     T minValue(Node<T> node) {
         T minVal = node.data;

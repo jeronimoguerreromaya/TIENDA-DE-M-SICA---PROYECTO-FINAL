@@ -1,13 +1,18 @@
 package com.tiendamusica.app.demo2;
 
 import com.tiendamusica.Logica.Artista;
+import com.tiendamusica.Logica.Cancion;
 import com.tiendamusica.Logica.TiendaMusica;
+import com.tiendamusica.myTools.BinaryTree;
 import com.tiendamusica.myTools.Estado;
+import com.tiendamusica.myTools.ListaDobleEnlazada;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 
 import javax.swing.*;
+import java.io.IOException;
+import java.net.URL;
 
 public class AdminController {
     TiendaMusica myTienda ;
@@ -70,18 +75,24 @@ public class AdminController {
         }
     }
 
+    public void CargarCancionButtonClick(){
+
+    }
+
     public void agregarCancionButtonClick() {
 
+
+       // nombreAlbun.getText().isEmpty() || duracion.getText().isEmpty() ||
+               // fecha.getValue() == null || genero.getText().isEmpty() ||
+               // url.getText().isEmpty()
         // Verifica si alguno de los campos está vacío
-        if (artista.getText().isEmpty() || nombreCancion.getText().isEmpty() ||
-                nombreAlbun.getText().isEmpty() || duracion.getText().isEmpty() ||
-                fecha.getValue() == null || genero.getText().isEmpty() ||
-                url.getText().isEmpty()) {
+        if ( nombreCancion.getText().isEmpty()
+               ) {
 
             myAlerta("No se permiten campos vacíos. Por favor, completa todos los campos antes de continuar.");
         } else {
-            // Si todos los campos están llenos, puedes proceder con la acción deseada
-            String artistaNombre = artista.getText();
+            // Si todos los campos están llenos,  proceder con la acción deseada
+
             String cancionNombre = nombreCancion.getText();
             String albumNombre = nombreAlbun.getText();
             String duracionCancion = duracion.getText();
@@ -89,14 +100,52 @@ public class AdminController {
             String urlCancion = url.getText();
             java.time.LocalDate fechaCancion = fecha.getValue();
 
-            //Implementar metodo de crear cancion en logica de la tienda
-            //myTienda.crearCancion(null);
+            URL myUrlCancion = null;
+            //Convertir de String a formato URL
+            try {
+                myUrlCancion = new URL(urlCancion);
+            } catch (IOException e) {
+
+                myAlerta("Mal formato de URL");
+            }
+
+            myTienda = new TiendaMusica();
+            //Nombre de artista a buscar
+            String artistaName = artista.getText();
+            //Variables auxiliares
+            BinaryTree<Artista> treeAxl = myTienda.getArtistas();
+            Artista artAXl = new Artista();
+            artAXl.setNombre(artistaName);
+            //Obtener artista a agregar cancion
+            Artista artista1 = treeAxl.ObtenerElemento(artAXl);
+            if(artista1!=null){
+                Cancion cancion = new Cancion(cancionNombre, albumNombre, duracionCancion, generoCancion, myUrlCancion);
+
+                myTienda.crearCancion(cancion,artista1);
+                System.out.println(artista1.toString());
+
+
+                ListaDobleEnlazada<Cancion> cancionesArtista = new ListaDobleEnlazada<>();
+
+                    cancionesArtista = artista1.getCanciones();
+                    System.out.println(cancionesArtista.getSize());
+
+                    for(Cancion cancionShow : cancionesArtista){
+                        System.out.println(cancionShow.toString());
+
+                    }
+
+
+
+            }else {
+                myAlerta("Artista no existe");
+            }
+
+
 
             clearAllFields();
 
-
         }
-
 
     }
 

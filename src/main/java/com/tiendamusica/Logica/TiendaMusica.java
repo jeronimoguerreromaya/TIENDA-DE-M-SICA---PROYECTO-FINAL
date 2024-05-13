@@ -34,7 +34,26 @@ public class TiendaMusica {
         this.usuarios=deserializarUsuario();
         this.artistas = deserializeBinaryTree();
     }
-    public BinaryTree<Artista> crearArtista (Artista artista){
+    public  void crearCancion(Cancion cancion ,Artista artista1){
+            //agregar codigo a la cancion
+            String codigo = generarCodigo();
+            cancion.setCode(codigo);
+            artista1.agregarCancion(cancion);
+            artistas.RemplazarElemento(artista1,artista1);
+            serializeBinaryTree(artistas);
+
+    }
+    //Genera codigo unico  de una cancin nueva cancion
+    public  String generarCodigo(){
+        int min = 100000;
+        int max = 999999;
+        int rango = max - min + 1;
+        int numeroAleatorio = (int) (Math.random() * rango) + min;
+        return Integer.toString(numeroAleatorio);
+
+     }
+
+    public void crearArtista (Artista artista){
 
 
 
@@ -49,22 +68,11 @@ public class TiendaMusica {
             System.out.println("Artista agregado");
 
         }
-        return  artistas;
-    }
-    public  void crearCancion(Cancion cancion ,Artista artista){
-        if(validarCancion(cancion.getNombre(), cancion.getNombreAlbum())){
-            //agregar codigo a la cancion
-          //  cancion.setCode(generarCodigo());
-            //Agregar cancion a artista
-        }else{
-            System.out.println("cancion ya exist");
-        }
 
     }
-    //Genera codigo unico  de una cancin nueva cancion
-    public  void generarCodigo(){
 
-    }
+
+
     //Metodo registrar usuario
     public  HashMap<String,Usuario> registrarUsuario(Usuario user){
 
@@ -119,7 +127,7 @@ public class TiendaMusica {
     }
 
     public void serializeBinaryTree(BinaryTree<Artista> tree) {
-        try (FileOutputStream fileOutputStream = new FileOutputStream("src\\main\\java\\Percistencia\\ArbolArt1.txt");
+        try (FileOutputStream fileOutputStream = new FileOutputStream("src\\main\\java\\Percistencia\\Artistas.xml");
              ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
             // Escribe el objeto BinaryTree en el archivo
             objectOutputStream.writeObject(tree);
@@ -131,7 +139,7 @@ public class TiendaMusica {
     }
     public BinaryTree<Artista> deserializeBinaryTree() {
         BinaryTree<Artista> tree = new BinaryTree<>();
-        try (FileInputStream fileInputStream = new FileInputStream("src\\main\\java\\Percistencia\\ArbolArt1.txt");
+        try (FileInputStream fileInputStream = new FileInputStream("src\\main\\java\\Percistencia\\Artistas.xml");
              ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
             // Lee el objeto BinaryTree desde el archivo
             tree = (BinaryTree<Artista>) objectInputStream.readObject();

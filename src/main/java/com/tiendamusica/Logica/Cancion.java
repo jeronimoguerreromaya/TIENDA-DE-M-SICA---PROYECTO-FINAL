@@ -14,18 +14,18 @@ public class Cancion implements Comparable<Cancion>, Serializable {
     private String nombreAlbum;
   // private BufferedImage caratula;
     private Date year;
-    private float duracion;
-    private Genero genero;
-   // private URL url;
+    private String duracion;
+    private String genero;
+    private URL url;
 
-    public Cancion(String nombre, String nombreAlbum, BufferedImage caratula, Date year, float duracion, Genero genero, URL url) {
+    public Cancion(String nombre, String nombreAlbum,  String duracion, String genero, URL url) {
         this.nombre = nombre;
         this.nombreAlbum = nombreAlbum;
       //  this.caratula = caratula;
-        this.year = year;
+        //this.year = year;
         this.duracion = duracion;
         this.genero = genero;
-       // this.url = url;
+        this.url = url;
     }
     public Cancion(){}
 
@@ -71,19 +71,19 @@ public class Cancion implements Comparable<Cancion>, Serializable {
         this.year = year;
     }
 
-    public float getDuracion() {
+    public String getDuracion() {
         return duracion;
     }
 
-    public void setDuracion(float duracion) {
+    public void setDuracion(String duracion) {
         this.duracion = duracion;
     }
 
-    public Genero getGenero() {
+    public String getGenero() {
         return genero;
     }
 
-    public void setGenero(Genero genero) {
+    public void setGenero(String genero) {
         this.genero = genero;
     }
 
@@ -94,6 +94,19 @@ public class Cancion implements Comparable<Cancion>, Serializable {
    // public void setUrl(URL url) {
     //    this.url = url;
     //}
+
+    @Override
+    public String toString() {
+        return "Cancion{" +
+                "code='" + code + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", nombreAlbum='" + nombreAlbum + '\'' +
+                ", year=" + year +
+                ", duracion='" + duracion + '\'' +
+                ", genero='" + genero + '\'' +
+                ", url=" + url +
+                '}';
+    }
 
     @Override
     public int compareTo(Cancion o) {

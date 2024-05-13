@@ -6,7 +6,7 @@ public class Administrador extends Person {
 
     public Administrador() {
         super();
-        this.userName = "admin";
+        this.userName = "1";
         this.password = "1";
     }
 

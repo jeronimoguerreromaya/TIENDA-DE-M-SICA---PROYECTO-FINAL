@@ -26,13 +26,13 @@
       </Label>
       <TextField fx:id="codigo" layoutX="23.0" layoutY="87.0" promptText="Codigo" />
       <TextField fx:id="artista" layoutX="245.0" layoutY="87.0" promptText="Artista" />
-      <TextField fx:id="nombreCancion" layoutX="432.0" layoutY="87.0" promptText="Nombre Cancion" />
+      <TextField fx:id="nombreCancion" layoutX="429.0" layoutY="134.0" promptText="Nombre Cancion" />
       <TextField fx:id="nombreAlbun" layoutX="245.0" layoutY="134.0" promptText="Nombre Albun" />
-      <TextField fx:id="duracion" layoutX="432.0" layoutY="134.0" promptText="Duracion" />
+      <TextField fx:id="duracion" layoutX="429.0" layoutY="175.0" promptText="Duracion" />
       <DatePicker fx:id="fecha" layoutX="245.0" layoutY="226.0" prefHeight="25.0" prefWidth="149.0" promptText="Fecha" />
       <TextField fx:id="genero" layoutX="245.0" layoutY="175.0" promptText="Genero" />
-      <TextField fx:id="url" layoutX="432.0" layoutY="175.0" promptText="URL" />
-      <Button layoutX="258.0" layoutY="346.0" mnemonicParsing="false" text="Cargar Cancion" />
+      <TextField fx:id="url" layoutX="429.0" layoutY="226.0" promptText="URL" />
+      <Button layoutX="429.0" layoutY="87.0" mnemonicParsing="false" onAction="#CargarCancionButtonClick" prefHeight="25.0" prefWidth="139.0" text="Cargar Cancion" />
       <Button layoutX="258.0" layoutY="294.0" mnemonicParsing="false" onAction="#agregarCancionButtonClick" prefHeight="25.0" prefWidth="97.0" text="Agregar" />
    </children>
 </AnchorPane>

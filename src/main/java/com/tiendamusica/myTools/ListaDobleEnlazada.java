@@ -59,6 +59,16 @@ public class ListaDobleEnlazada<T  extends Comparable<T> & Serializable> impleme
 
         size++;
     }
+    public boolean buscar(T dato) {
+        Nodo<T> actual = cabeza;
+        while (actual != null) {
+            if (actual.dato.equals(dato)) {
+                return true; // Encontró el dato en la lista
+            }
+            actual = actual.siguiente;
+        }
+        return false; // No encontró el dato en la lista
+    }
 
     public void eliminarEnd() {
         if (cabeza == null) {

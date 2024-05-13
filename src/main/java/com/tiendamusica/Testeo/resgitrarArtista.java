@@ -15,15 +15,23 @@ public class resgitrarArtista {
         TiendaMusica my = new TiendaMusica();
 
         Artista nightwish = new Artista("0000", "Nightwish", "Finlandia", Estado.Banda);
-        Artista wizKhalifa = new Artista("0001", "Wiz Khalifa", "Estados Unidos", Estado.Solista);
+        Artista wizKhalifa = new Artista("0001", "Wiz Khalifa", "US", Estado.Solista);
 
-            my.crearArtista(nightwish);
-            my.crearArtista(nightwish);
+            //my.crearArtista(nightwish);
+            //my.crearArtista(nightwish);
 
+            //nightwish.toString();
 
 
         a = my.getArtistas();
-        a.printInOrder();
+        Artista s = new Artista();
+            s.setNombre(nightwish.getNombre());
+        Artista x = new Artista();
+
+        x = a.ObtenerElemento(s);
+
+        System.out.println(x.toString());
+
 
     }
 }
