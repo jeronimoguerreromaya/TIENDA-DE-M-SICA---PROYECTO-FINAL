@@ -88,7 +88,7 @@ public class LoginController {
         loader.setLocation(getClass().getResource("TiendaMusica-view.fxml"));
 
         Parent p = loader.load();
-;        Scene s = new Scene(p, 350, 450);
+;        Scene s = new Scene(p, 608, 402);
 
         Stagep.setScene(s);
         Stagep.show();

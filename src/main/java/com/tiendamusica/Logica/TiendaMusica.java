@@ -1,6 +1,7 @@
 package com.tiendamusica.Logica;
 
 import com.tiendamusica.myTools.BinaryTree;
+import com.tiendamusica.myTools.Cola;
 import com.tiendamusica.myTools.ListaDobleEnlazada;
 
 import java.awt.image.BufferedImage;
@@ -52,6 +53,10 @@ public class TiendaMusica {
         return Integer.toString(numeroAleatorio);
 
      }
+    public Cola<Cancion> ObtenerCancionesArtista(BinaryTree<Artista> artistas){
+        Cola<Cancion> canciones = new Cola<>();
+        return canciones;
+    }
 
     public void crearArtista (Artista artista){
 
