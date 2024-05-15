@@ -1,6 +1,7 @@
 package com.tiendamusica.Logica;
 
 import com.tiendamusica.myTools.BinaryTree;
+import com.tiendamusica.myTools.Estado;
 import com.tiendamusica.myTools.ListaDobleEnlazada;
 
 import java.awt.image.BufferedImage;
@@ -164,6 +165,30 @@ public class TiendaMusica {
             String clave = entry.getKey();
             Usuario usuario = entry.getValue();
             System.out.println(clave + " : " + usuario.toString());
+        }
+    }
+
+    public void agregarCancion() {
+        BinaryTree<Artista> a = new BinaryTree<>();
+        TiendaMusica my = new TiendaMusica();
+        Artista wizKhalifa = new Artista("0001", "Wiz Khalifa", "US", Estado.Solista);
+        Cancion c1 = new Cancion();
+        c1.setNombre("nemo");
+
+        a = my.getArtistas();
+        ListaDobleEnlazada<Cancion> c = new ListaDobleEnlazada<>();
+        Artista s = new Artista();
+        s.setNombre(wizKhalifa.getNombre());
+        Artista x = new Artista();
+        if(a.search(s)) {
+            x = a.ObtenerElemento(s);
+            c = x.getCanciones();
+            System.out.println(c.getSize());
+            for(Cancion cancion : c){
+                System.out.println(cancion.toString());
+            }
+        }else {
+            System.out.println("No se encotro artista");
         }
     }
 
