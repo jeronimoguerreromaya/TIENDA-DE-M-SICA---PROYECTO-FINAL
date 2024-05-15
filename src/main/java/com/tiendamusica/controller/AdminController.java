@@ -1,4 +1,4 @@
-package com.tiendamusica.app.demo2;
+package com.tiendamusica.controller;
 
 import com.tiendamusica.Logica.Artista;
 import com.tiendamusica.Logica.Cancion;

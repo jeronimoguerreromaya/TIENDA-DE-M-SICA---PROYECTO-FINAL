@@ -1,4 +1,4 @@
-package com.tiendamusica.app.demo2;
+package com.tiendamusica.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
