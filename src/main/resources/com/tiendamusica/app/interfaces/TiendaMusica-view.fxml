@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="402.0" prefWidth="608.0" style="-fx-background-color: DarkBlue;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendamusica.app.demo2.TiendaMusicaController">
+<AnchorPane prefHeight="402.0" prefWidth="608.0" style="-fx-background-color: DarkBlue;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendamusica.controller.TiendaMusicaController">
     <children>
         <AnchorPane fx:id="panelDerecho" prefHeight="398.0" prefWidth="425.0">
             <children>

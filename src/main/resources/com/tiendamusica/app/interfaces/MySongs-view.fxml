@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="398.0" prefWidth="425.0" style="-fx-background-color: LightBlue;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendamusica.controller.MySongsController">
+    <children>
+        <Button fx:id="bntPlay" layoutX="367.0" layoutY="360.0" mnemonicParsing="false" onAction="#showPlay">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="22.0">
+               <image>
+                  <Image url="@../../../../image/boton-de-play.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+        <TableView layoutY="54.0" prefHeight="297.0" prefWidth="425.0">
+            <columns>
+                <TableColumn prefWidth="149.0" text="Nombre" />
+                <TableColumn prefWidth="72.0" text="Año" />
+                <TableColumn prefWidth="128.0" text="Artista" />
+                <TableColumn prefWidth="75.0" text="Duracion" />
+            </columns>
+        </TableView>
+        <Button fx:id="btnBuscar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#showBuscar" text="Buscar" />
+        <TextField fx:id="txtBuscar" layoutX="78.0" layoutY="14.0" promptText="Buscador..." />
+      <Button fx:id="btnFav" layoutX="308.0" layoutY="360.0" mnemonicParsing="false" onAction="#showFav">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="22.0">
+               <image>
+                  <Image url="@../../../../image/estrella.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+    </children>
+</AnchorPane>

@@ -1,4 +1,4 @@
-package com.tiendamusica.app.demo2;
+package com.tiendamusica.controller;
 
 
 import javafx.event.ActionEvent;
@@ -59,9 +59,10 @@ public class TiendaMusicaController implements Initializable {
     @FXML
     void showMisCanciones(ActionEvent event) {
         try {
-            comprombarIdenidad();
-        }catch (IOException e){
-            System.out.println("Error: " + e.getMessage());
+            Node node = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/tiendamusica/app/interfaces/MySongs-view.fxml")));
+            panelFormulario.getChildren().setAll(node);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -94,7 +95,7 @@ public class TiendaMusicaController implements Initializable {
             //Implemntar funcion de actulizar la tabla de la interfas con la musica del usuario
 
             try {
-                Node node = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/tiendamusica/app/demo2/MySongs-view.fxml")));
+                Node node = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/tiendamusica/app/MySongs-view.fxml")));
                 panelFormulario.getChildren().setAll(node);
             } catch (Exception e) {
                 System.out.println(e.getMessage());

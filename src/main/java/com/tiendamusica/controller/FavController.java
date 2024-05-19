@@ -1,4 +1,4 @@
-package com.tiendamusica.app.demo2;
+package com.tiendamusica.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MySongsController implements Initializable {
+public class FavController implements Initializable {
     @FXML
     private Button bntPlay;
     @FXML
@@ -30,5 +30,6 @@ public class MySongsController implements Initializable {
     void showBuscar(ActionEvent event) {
 
     }
+
 
 }

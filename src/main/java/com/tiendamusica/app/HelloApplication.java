@@ -1,4 +1,4 @@
-package com.tiendamusica.app.demo2;
+package com.tiendamusica.app;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

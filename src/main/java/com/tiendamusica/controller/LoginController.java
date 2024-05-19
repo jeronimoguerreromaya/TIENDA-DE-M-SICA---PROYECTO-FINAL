@@ -1,7 +1,5 @@
-package com.tiendamusica.app.demo2;
+package com.tiendamusica.controller;
 
-import com.tiendamusica.Logica.Administrador;
-import com.tiendamusica.Logica.Person;
 import com.tiendamusica.Logica.TiendaMusica;
 import com.tiendamusica.Logica.Usuario;
 import javafx.fxml.FXML;

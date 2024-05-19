@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="402.0" prefWidth="608.0" style="-fx-background-color: LightBlue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendamusica.app.demo2.LoginController">
+<AnchorPane prefHeight="402.0" prefWidth="608.0" style="-fx-background-color: LightBlue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendamusica.controller.LoginController">
    <children>
       <Button layoutX="383.0" layoutY="200.0" mnemonicParsing="false" onAction="#ingresarButtonClick" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: Blue;" text="Ingresar" textFill="WHITE" />
       <TextField fx:id="usuarioText" layoutX="382.0" layoutY="89.0" prefHeight="25.0" prefWidth="149.0" promptText="Usuario" />
