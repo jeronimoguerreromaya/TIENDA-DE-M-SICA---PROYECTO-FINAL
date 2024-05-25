@@ -60,12 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-<<<<<<< HEAD
-                            <mainClass>com.tiendamusica.app.HelloApplication
-                            </mainClass>
-=======
                             <mainClass>com.tiendamusica.app.TiendaStorifyApp</mainClass>
->>>>>>> master
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
