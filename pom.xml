@@ -7,7 +7,7 @@
     <groupId>com.TiendaMusica.APP</groupId>
     <artifactId>TiendaMusica</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>demo2</name>
+    <name>interfaces</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -60,8 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.tiendamusica.app.demo2/com.tiendamusica.app.demo2.HelloApplication
-                            </mainClass>
+                            <mainClass>com.tiendamusica.app.TiendaStorifyApp</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

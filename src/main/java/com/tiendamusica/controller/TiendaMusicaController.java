@@ -1,6 +1,9 @@
-package com.tiendamusica.app.demo2;
+package com.tiendamusica.controller;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -59,9 +62,10 @@ public class TiendaMusicaController implements Initializable {
     @FXML
     void showMisCanciones(ActionEvent event) {
         try {
-            comprombarIdenidad();
-        }catch (IOException e){
-            System.out.println("Error: " + e.getMessage());
+            Node node = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/tiendamusica/app/interfaces/MySongs-view.fxml")));
+            panelFormulario.getChildren().setAll(node);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -85,20 +89,28 @@ public class TiendaMusicaController implements Initializable {
         closed();
     }
 
+<<<<<<< HEAD
     //Validar si es usuario o administrador y aser su respetiva acccion
     public void comprombarIdenidad()throws IOException{
+=======
+
+    public void MisCancionesButtonClick()throws IOException{
+>>>>>>> master
         //Validar si es usuario o admin
         if(esAdministrador){
             redireccionarAdmin();
         }else{
             //Implemntar funcion de actulizar la tabla de la interfas con la musica del usuario
+<<<<<<< HEAD
 
             try {
-                Node node = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/tiendamusica/app/demo2/MySongs-view.fxml")));
+                Node node = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/tiendamusica/app/MySongs-view.fxml")));
                 panelFormulario.getChildren().setAll(node);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
+=======
+>>>>>>> master
             System.out.println("Update table whith my music");
         }
     }
@@ -115,7 +127,11 @@ public class TiendaMusicaController implements Initializable {
 
     public void closed(){
         //Stage currentStage = (Stage) usuarioText.getScene().getWindow();
+<<<<<<< HEAD
         // currentStage.close();
+=======
+       // currentStage.close();
+>>>>>>> master
     }
     public void setEsAdministrador(boolean esAdministrador) {
         this.esAdministrador = esAdministrador;

@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="398.0" prefWidth="425.0" style="-fx-background-color: LightBlue;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendamusica.app.demo2.MySongsController">
+<AnchorPane prefHeight="398.0" prefWidth="425.0" style="-fx-background-color: LightBlue;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendamusica.controller.FavController">
     <children>
-        <Button fx:id="bntPlay" layoutX="358.0" layoutY="360.0" mnemonicParsing="false" onAction="#showPlay" text="Play" />
+        <Button fx:id="bntPlay" layoutX="367.0" layoutY="360.0" mnemonicParsing="false" onAction="#showPlay">
+            <graphic>
+                <ImageView fitHeight="22.0" fitWidth="22.0">
+                    <image>
+                        <Image url="@../../../../image/boton-de-play.png" />
+                    </image>
+                </ImageView>
+            </graphic></Button>
         <TableView layoutY="54.0" prefHeight="297.0" prefWidth="425.0">
             <columns>
                 <TableColumn prefWidth="149.0" text="Nombre" />

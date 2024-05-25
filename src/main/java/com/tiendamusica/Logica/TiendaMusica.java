@@ -15,18 +15,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 
 public class TiendaMusica {
-
-
-
     private HashMap<String, Usuario> usuarios = new HashMap<>();
-
-
-
     private  BinaryTree<Artista> artistas = new BinaryTree<>();
-
-
-
-
     private Administrador admin ;
 
 
@@ -42,7 +32,6 @@ public class TiendaMusica {
             artista1.agregarCancion(cancion);
             artistas.RemplazarElemento(artista1,artista1);
             serializeBinaryTree(artistas);
-
     }
     //Genera codigo unico  de una cancin nueva cancion
     public  String generarCodigo(){
@@ -51,7 +40,6 @@ public class TiendaMusica {
         int rango = max - min + 1;
         int numeroAleatorio = (int) (Math.random() * rango) + min;
         return Integer.toString(numeroAleatorio);
-
      }
     public Cola<Cancion> ObtenerCancionesArtista(BinaryTree<Artista> artistas){
         Cola<Cancion> canciones = new Cola<>();
@@ -59,75 +47,56 @@ public class TiendaMusica {
     }
 
     public void crearArtista (Artista artista){
-
-
-
         if (artistas.search(artista)) {
             // Si el artista ya existe en el árbol, no se agrega
             System.out.println("Artista ya existe");
-
         } else {
             // Si el artista no existe, se agrega al árbol
             artistas.insert(artista);
             serializeBinaryTree(artistas);
             System.out.println("Artista agregado");
-
         }
-
     }
-
-
 
     //Metodo registrar usuario
     public  HashMap<String,Usuario> registrarUsuario(Usuario user){
-
         if(!validarUsuario(user.getUserName())){
-
             usuarios.put(user.getUserName(),user);
             serializarUsuario(usuarios);
             usuarios = deserializarUsuario();
 
             System.out.println("Usuario registrado correctamente");
-
         }else {
-
             System.out.println("Usuario ya existe ");
         }
         return usuarios;
     }
     //Metodos  de deserializar y serializar
     public  void serializarUsuario (HashMap<String,Usuario> usuarios){
-
         try {
             ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("src\\main\\java\\Percistencia\\usuarios.txt"));
             os.writeObject(usuarios);
             os.flush();
             os.close();
         }catch (IOException e){
-
         }
     }
     public  HashMap<String,Usuario> deserializarUsuario (){
-
         HashMap<String, Usuario> usuarios = new HashMap<>();
         try{
             ObjectInputStream os = new ObjectInputStream(new FileInputStream("src\\main\\java\\Percistencia\\usuarios.txt"));
             usuarios=(HashMap<String, Usuario>) os.readObject();
-
-
         }catch (IOException | ClassNotFoundException e){
-
         }
         return usuarios;
-    }public  void serializarArtista (BinaryTree<Artista> artistas){
-
+    }
+    public  void serializarArtista (BinaryTree<Artista> artistas){
         try {
             ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("src\\main\\java\\Percistencia\\Artistas1.txt"));
             os.writeObject(artistas);
             os.flush();
             os.close();
         }catch (IOException e){
-
         }
     }
 
@@ -162,7 +131,6 @@ public class TiendaMusica {
 
     //Valida si los datos ingresados son valido para el inicio de sesion
     public boolean validarIngreso(String user,String password){
-
         if (validarUsuario(user)) {
             //variable usuario auxiliar
             Usuario u = usuarios.get(user);
@@ -174,7 +142,6 @@ public class TiendaMusica {
             }
         }
         return false;
-
     }
 
     //Valida si ya existe un usuario con el mismo username
@@ -198,14 +165,12 @@ public class TiendaMusica {
 
     //Imprime a los usuario en consola
     public  void verUsuarios(){
-
         for (HashMap.Entry<String, Usuario> entry : usuarios.entrySet()) {
             String clave = entry.getKey();
             Usuario usuario = entry.getValue();
             System.out.println(clave + " : " + usuario.toString());
         }
     }
-
 
     //Getter y Setters
     public HashMap<String, Usuario> getUsuarios() {
@@ -214,15 +179,12 @@ public class TiendaMusica {
     public void setUsuarios(HashMap<String, Usuario> usuarios) {
         this.usuarios = usuarios;
     }
-
     public Administrador getAdmin() {
         return admin = new Administrador();
     }
-
     public void setAdmin(Administrador admin) {
         this.admin = admin;
     }
-
     public BinaryTree<Artista> getArtistas() {
         return deserializeBinaryTree();
     }
