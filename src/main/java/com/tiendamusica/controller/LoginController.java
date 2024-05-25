@@ -40,8 +40,6 @@ public class LoginController {
         if(!user.isEmpty()&&!password.isEmpty()){
             //Validar usuario
             if(myTienda.validarIngreso(user,password)){
-
-
                 redireccionarTiendaMusica();
                 System.out.println("ingreso usuario");
             }else {
@@ -52,7 +50,6 @@ public class LoginController {
                 }else{
                     myAlerta("Datos incorrectos");
                 }
-
             }
             clearALl();
         }else {
@@ -80,30 +77,30 @@ public class LoginController {
     }
 
     private void redireccionarTiendaMusica() throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/tiendamusica/app/interfaces/TiendaMusica-view.fxml"));            Parent root = loader.load();
+            Scene scene = new Scene(root, 608, 402);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
 
-        Stage Stagep = new Stage();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("TiendaMusica-view.fxml"));
+            TiendaMusicaController tiendaMusicaController = loader.getController();
 
+<<<<<<< HEAD
         Parent p = loader.load();
 ;        Scene s = new Scene(p, 608, 402);
+=======
+            String user = usuarioText.getText();
+            String password = claveText.getText();
+            boolean esAdministrador = myTienda.getAdmin().esAdministrador(user, password);
+            tiendaMusicaController.setEsAdministrador(esAdministrador);
+            tiendaMusicaController.setEsUsuario(!esAdministrador);
+>>>>>>> master
 
-        Stagep.setScene(s);
-        Stagep.show();
-
-        TiendaMusicaController tiendaMusicaController = loader.getController();
-
-        // Pasar la información de si es administrador o usuario
-        String user = usuarioText.getText();
-        String password = claveText.getText();
-        if (myTienda.getAdmin().esAdministrador(user, password)) {
-            tiendaMusicaController.setEsAdministrador(true);
-        } else {
-            tiendaMusicaController.setEsUsuario(true);
+            closed();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-        closed();
-
     }
 
     //Mostrar alerta
