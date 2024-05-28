@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="402.0" prefWidth="433.0" style="-fx-background-color: LightBlue;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendamusica.controller.AddSongController">
+   <children>
+      <Button fx:id="btnAgregar" layoutX="272.0" layoutY="302.0" mnemonicParsing="false" onAction="#showAgregar" style="-fx-background-color: #576A8B; -fx-border-width: 0px 0px 1px 0px; -fx-border-color: #FFFFFF;" text="Agregar" textFill="WHITE" />
+      <Button fx:id="btnLimpiar" layoutX="91.0" layoutY="302.0" mnemonicParsing="false" onAction="#showLimpiar" style="-fx-background-color: #576A8B; -fx-border-width: 0px 0px 1px 0px; -fx-border-color: #FFFFFF;" text="Limpiar" textFill="WHITE" />
+      <Label layoutX="31.0" layoutY="88.0" text="Nombre cancion" textFill="BLACK">
+         <font>
+            <Font name="Bookman Old Style Bold" size="18.0" />
+         </font></Label>
+      <Label layoutX="33.0" layoutY="117.0" prefHeight="30.0" prefWidth="147.0" text="Nombre album" textFill="BLACK">
+         <font>
+            <Font name="Bookman Old Style Bold" size="18.0" />
+         </font></Label>
+      <Label layoutX="33.0" layoutY="151.0" prefHeight="30.0" prefWidth="147.0" text="Duracion" textFill="BLACK">
+         <font>
+            <Font name="Bookman Old Style Bold" size="18.0" />
+         </font></Label>
+      <Label layoutX="33.0" layoutY="184.0" prefHeight="30.0" prefWidth="147.0" text="Genero" textFill="BLACK">
+         <font>
+            <Font name="Bookman Old Style Bold" size="18.0" />
+         </font></Label>
+      <Label layoutX="33.0" layoutY="216.0" prefHeight="30.0" prefWidth="147.0" text="URL" textFill="BLACK">
+         <font>
+            <Font name="Bookman Old Style Bold" size="18.0" />
+         </font></Label>
+      <TextField fx:id="txtNombreCancion" layoutX="191.0" layoutY="83.0" prefHeight="31.0" prefWidth="212.0" promptText="Nombre cancion" />
+      <TextField fx:id="txtNombreAlbum" layoutX="191.0" layoutY="117.0" prefHeight="31.0" prefWidth="212.0" promptText="Nombre album" />
+      <TextField fx:id="txtDuracion" layoutX="191.0" layoutY="151.0" prefHeight="31.0" prefWidth="212.0" promptText="Duracion" />
+      <TextField fx:id="txtGenero" layoutX="191.0" layoutY="184.0" prefHeight="31.0" prefWidth="212.0" promptText="Genero" />
+      <TextField fx:id="txtURL" layoutX="191.0" layoutY="219.0" prefHeight="31.0" prefWidth="212.0" promptText="URL" />
+      <Label layoutX="131.0" layoutY="26.0" text="Agregar Cancion" textFill="BLACK">
+         <font>
+            <Font name="Bookman Old Style Bold" size="20.0" />
+         </font></Label>
+      <Separator layoutX="31.0" layoutY="67.0" prefHeight="13.0" prefWidth="374.0" />
+      <Separator layoutX="30.0" layoutY="260.0" prefHeight="13.0" prefWidth="374.0" />
+   </children>
+</AnchorPane>

@@ -15,8 +15,6 @@ public class ListaDobleEnlazada<T  extends Comparable<T> & Serializable> impleme
         cola = null;
         size = 0;
     }
-
-
     class Nodo<T> implements  Serializable{
         T dato;
         Nodo<T> siguiente;
@@ -29,7 +27,6 @@ public class ListaDobleEnlazada<T  extends Comparable<T> & Serializable> impleme
         }
     }
 
-
     public void addEnd(T dato) {
         Nodo<T> nuevoNodo = new Nodo<>(dato);
 
@@ -41,13 +38,11 @@ public class ListaDobleEnlazada<T  extends Comparable<T> & Serializable> impleme
             nuevoNodo.anterior = cola;
             cola = nuevoNodo;
         }
-
         size++;
     }
 
     public void addBeginning(T dato) {
         Nodo<T> nuevoNodo = new Nodo<>(dato);
-
         if (cabeza == null) {
             cabeza = nuevoNodo;
             cola = nuevoNodo;
@@ -56,7 +51,6 @@ public class ListaDobleEnlazada<T  extends Comparable<T> & Serializable> impleme
             cabeza.anterior = nuevoNodo;
             cabeza = nuevoNodo;
         }
-
         size++;
     }
     public boolean buscar(T dato) {
@@ -74,7 +68,6 @@ public class ListaDobleEnlazada<T  extends Comparable<T> & Serializable> impleme
         if (cabeza == null) {
             return;
         }
-
         if (cabeza == cola) {
             cabeza = null;
             cola = null;
@@ -82,7 +75,6 @@ public class ListaDobleEnlazada<T  extends Comparable<T> & Serializable> impleme
             cola = cola.anterior;
             cola.siguiente = null;
         }
-
         size--;
     }
 
@@ -90,7 +82,6 @@ public class ListaDobleEnlazada<T  extends Comparable<T> & Serializable> impleme
         if (cabeza == null) {
             return;
         }
-
         if (cabeza == cola) {
             cabeza = null;
             cola = null;
@@ -98,7 +89,6 @@ public class ListaDobleEnlazada<T  extends Comparable<T> & Serializable> impleme
             cabeza = cabeza.siguiente;
             cabeza.anterior = null;
         }
-
         size--;
     }
     public T getPosition(int p){
@@ -113,7 +103,6 @@ public class ListaDobleEnlazada<T  extends Comparable<T> & Serializable> impleme
         }else{
             return null;
         }
-
     }
 
     public int getSize() {
@@ -122,12 +111,10 @@ public class ListaDobleEnlazada<T  extends Comparable<T> & Serializable> impleme
 
     public void print() {
         Nodo<T> actual = cabeza;
-
         while (actual != null) {
             System.out.println(actual.dato + " ");
             actual = actual.siguiente;
         }
-
         System.out.println();
     }
 
@@ -138,11 +125,9 @@ public class ListaDobleEnlazada<T  extends Comparable<T> & Serializable> impleme
     }
     private class ListaIterator implements Iterator<T> {
         private Nodo<T> actual;
-
         public ListaIterator() {
             actual = cabeza;
         }
-
         @Override
         public boolean hasNext() {
             return actual != null;
@@ -157,4 +142,5 @@ public class ListaDobleEnlazada<T  extends Comparable<T> & Serializable> impleme
             actual = actual.siguiente;
             return dato;
         }
-    }}
+    }
+}
