@@ -9,8 +9,6 @@ public class Usuario extends Person implements Serializable {
     private String userName;
     private String contrasena;
     private String gmail;
-    //private ListaCircular<Cancion> misCanciones;
-
 
     public Usuario(){
 
@@ -74,13 +72,6 @@ public class Usuario extends Person implements Serializable {
         this.gmail = gmail;
     }
 
-    //public ListaCircular<Cancion> getMisCanciones() {
-       // return misCanciones;
-    //}
-
-    //public void setMisCanciones(ListaCircular<Cancion> misCanciones) {
-        //this.misCanciones = misCanciones;
-   // }
     //Metodo para imprimir en consola los atributos de usuario
     @Override
     public String toString() {

@@ -1,13 +1,11 @@
 package com.tiendamusica.Logica;
 
+import com.tiendamusica.exceptions.AtributoVacioException;
 import com.tiendamusica.myTools.BinaryTree;
 import com.tiendamusica.myTools.ListaDobleEnlazada;
-
-import java.awt.image.BufferedImage;
+import javafx.scene.control.Alert;
 import java.io.*;
 import java.net.URL;
-import java.nio.file.attribute.UserPrincipal;
-import java.util.Date;
 import java.util.HashMap;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -15,16 +13,18 @@ import java.io.ObjectInputStream;
 
 public class TiendaMusica {
     private HashMap<String, Usuario> usuarios = new HashMap<>();
-    private  BinaryTree<Artista> artistas = new BinaryTree<>();
-    private Administrador admin ;
+    private BinaryTree<Artista> artistas = new BinaryTree<>();
+    private Administrador admin;
+    private static ListaDobleEnlazada<Cancion> canciones;
 
 
     public TiendaMusica(){
       //Inicializar el mapa de usuarios con los guardados en memeoria
         this.usuarios=deserializarUsuario();
         this.artistas = deserializeBinaryTree();
+        this.canciones = new ListaDobleEnlazada();
     }
-    public  void crearCancion(Cancion cancion ,Artista artista1){
+    public  void crearCancion(Cancion cancion, Artista artista1){
             //agregar codigo a la cancion
             String codigo = generarCodigo();
             cancion.setCode(codigo);
@@ -59,7 +59,6 @@ public class TiendaMusica {
             usuarios.put(user.getUserName(),user);
             serializarUsuario(usuarios);
             usuarios = deserializarUsuario();
-
             System.out.println("Usuario registrado correctamente");
         }else {
             System.out.println("Usuario ya existe ");
@@ -167,6 +166,77 @@ public class TiendaMusica {
         }
     }
 
+    //serializacion de lista de canciones
+    public static void serializarCanciones() {
+        try {
+            // Crear un ObjectOutputStream para escribir en el archivo
+            ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("src\\main\\java\\Persistencia\\canciones.ser"));
+            // Serializar la lista de canciones y escribirla en el archivo
+            outputStream.writeObject(canciones);
+            // Cerrar el stream
+            outputStream.close();
+            System.out.println("Las canciones han sido serializadas exitosamente.");
+        } catch (IOException e) {
+            // Manejar la excepción en caso de error durante la escritura
+            System.err.println("Error al serializar las canciones: " + e.getMessage());
+        }
+    }
+    public void deserializarCancion() {
+        try {
+            ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("ruta/al/archivo/canciones.ser"));
+            ListaDobleEnlazada<Cancion> cancionesDeserializadas = (ListaDobleEnlazada<Cancion>) inputStream.readObject();
+            inputStream.close();
+            System.out.println("Canciones deserializadas con éxito.");
+        } catch (IOException | ClassNotFoundException e) {
+            System.err.println("Error al deserializar las canciones: " + e.getMessage());
+        }
+    }
+
+    //metodo para mostrar mensajes de error
+    public static void mostrarMensaje(String titulo, String header, String contenido, Alert.AlertType alertType){
+        Alert alert = new Alert(alertType);
+        alert.setTitle(titulo);
+        alert.setHeaderText(header);
+        alert.setContentText(contenido);
+        alert.showAndWait();
+    }
+
+    //metodo para agragar canciones a la lista proncipal
+    public static void agregarCancion(String nombre, String nombreAlbum, String duracion, String genero, URL url) throws AtributoVacioException {
+        if(nombre == null || nombre.isBlank()){
+            System.out.print("nombre");
+            throw new AtributoVacioException("el nombre es obligatoria");
+        }
+        if(nombreAlbum == null || nombreAlbum.isBlank()){
+            System.out.print("nombre album");
+            throw new AtributoVacioException("el nombre de album es obligatoria");
+        }
+        if(duracion == null || duracion.isBlank()){
+            System.out.print("duracion");
+            throw new AtributoVacioException("La duracion es obligatoria");
+        }
+        if(genero == null || genero.isBlank()){
+            System.out.print("genero");
+            throw new AtributoVacioException("el genero es obligatoria");
+        }
+        if(url == null ){
+            System.out.print("url");
+            throw new AtributoVacioException("la url es obligatoria");
+        }
+        Cancion nuevaCancion = new Cancion(nombre, nombreAlbum, duracion, genero, url);
+        canciones.addEnd(nuevaCancion);
+        // Llamar al método para serializar las canciones después de agregar una nueva
+        serializarCanciones();
+        System.out.println("Canción agregada: " + nuevaCancion.getNombre());
+    }
+
+
+    //metodo para eliminar la cancion
+
+
+
+
+
     //Getter y Setters
     public HashMap<String, Usuario> getUsuarios() {
         return usuarios;
@@ -183,5 +253,6 @@ public class TiendaMusica {
     public BinaryTree<Artista> getArtistas() {
         return deserializeBinaryTree();
     }
-
+    public ListaDobleEnlazada<Cancion> getCanciones() { return canciones; }
+    public void setCanciones(ListaDobleEnlazada<Cancion> canciones) { this.canciones = canciones; }
 }

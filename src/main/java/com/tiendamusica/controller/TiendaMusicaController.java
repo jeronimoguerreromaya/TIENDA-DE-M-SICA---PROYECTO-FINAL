@@ -33,8 +33,6 @@ public class TiendaMusicaController implements Initializable {
     private Button btnAgregar;
     @FXML
     private AnchorPane panelFormulario;
-    @FXML
-    private Button btnFav;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -42,7 +40,12 @@ public class TiendaMusicaController implements Initializable {
     }
     @FXML
     void showFav(ActionEvent event) {
-
+        try {
+            Node node = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/tiendamusica/app/interfaces/Fav-view.fxml")));
+            panelFormulario.getChildren().setAll(node);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @FXML
@@ -52,7 +55,12 @@ public class TiendaMusicaController implements Initializable {
 
     @FXML
     void showAgregar(ActionEvent event) {
-
+        try {
+            Node node = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/tiendamusica/app/interfaces/AddSong-view.fxml")));
+            panelFormulario.getChildren().setAll(node);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @FXML

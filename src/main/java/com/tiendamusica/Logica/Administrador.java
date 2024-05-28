@@ -12,7 +12,6 @@ public class Administrador extends Person {
 
     //validar si credenciales de admnistrador
     public  boolean esAdministrador(String userName,String paswword){
-
         return this.userName.equals(userName)&&this.password.equals(password);
     }
 

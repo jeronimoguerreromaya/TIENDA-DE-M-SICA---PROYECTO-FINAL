@@ -1,29 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="398.0" prefWidth="425.0" style="-fx-background-color: LightBlue;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendamusica.controller.MySongsController">
+<AnchorPane prefHeight="402.0" prefWidth="433.0" style="-fx-background-color: LightBlue;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiendamusica.controller.MySongsController">
    <children>
-      <Button fx:id="bntPlay" layoutX="379.0" layoutY="358.0" mnemonicParsing="false" onAction="#showPlay" />
-      <TableView layoutY="54.0" prefHeight="297.0" prefWidth="425.0">
+       <Label layoutX="131.0" layoutY="7.0" text="Mis Canciones" textFill="BLACK">
+           <font>
+               <Font name="Bookman Old Style Bold" size="20.0" />
+           </font></Label>
+      <Button fx:id="bntPlay" layoutX="379.0" layoutY="358.0" mnemonicParsing="false" onAction="#showPlay" style="-fx-background-color: rgba(87,106,139,0); -fx-border-width: 1px 1px 1px 1px; -fx-border-color: #FFFFFF;">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/boton-de-play.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <TableView fx:id="tableCanciones" layoutY="83.0" onMouseClicked="#selectedClick" prefHeight="268.0" prefWidth="433.0">
         <columns>
-          <TableColumn prefWidth="149.0" text="Nombre" />
-          <TableColumn prefWidth="72.0" text="Año" />
-            <TableColumn prefWidth="128.0" text="Artista" />
-            <TableColumn prefWidth="75.0" text="Duracion" />
+          <TableColumn fx:id="columNombre" prefWidth="149.0" text="Nombre" />
+          <TableColumn fx:id="columAño" prefWidth="72.0" text="Año" />
+            <TableColumn fx:id="columURL" prefWidth="137.0" text="URL" />
+            <TableColumn fx:id="columDuracion" prefWidth="74.0" text="Duracion" />
         </columns>
       </TableView>
-      <Button fx:id="btnBuscar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#showBuscar" text="Buscar" />
-      <TextField fx:id="txtBuscar" layoutX="78.0" layoutY="14.0" promptText="Buscador..." />
-      <ImageView fitHeight="33.0" fitWidth="74.0" layoutX="373.0" layoutY="357.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../image/boton-de-play.png" />
-         </image>
-      </ImageView>
+      <Button fx:id="btnBuscar" layoutX="14.0" layoutY="45.0" mnemonicParsing="false" onAction="#showBuscar" style="-fx-background-color: #576A8B; -fx-border-width: 0px 0px 1px 0px; -fx-border-color: #FFFFFF;" text="Buscar" textFill="WHITE" />
+       <Button fx:id="btnFav" layoutX="308.0" layoutY="360.0" mnemonicParsing="false" onAction="#showFav" style="-fx-background-color: rgba(87,106,139,0); -fx-border-width: 1px 1px 1px 1px; -fx-border-color: #FFFFFF;">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="22.0">
+               <image>
+                  <Image url="@../image/estrella.png" />
+               </image>
+            </ImageView>
+         </graphic>
+       </Button>
+       <TextField fx:id="txtBuscar" layoutX="78.0" layoutY="45.0" promptText="Buscador..." />
+      <Separator layoutX="71.0" layoutY="37.0" prefHeight="0.0" prefWidth="265.0" />
    </children>
 </AnchorPane>
