@@ -121,5 +121,6 @@ public class FavController implements Initializable {
         this.canciones.setAll(canciones);
         tableCanciones.setItems(this.canciones);
     }
+
 }
 
