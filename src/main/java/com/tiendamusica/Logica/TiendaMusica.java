@@ -3,6 +3,8 @@ package com.tiendamusica.Logica;
 import com.tiendamusica.exceptions.AtributoVacioException;
 import com.tiendamusica.myTools.BinaryTree;
 import com.tiendamusica.myTools.ListaDobleEnlazada;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import java.io.*;
 import java.net.URL;
@@ -168,24 +170,19 @@ public class TiendaMusica {
 
     //serializacion de lista de canciones
     public static void serializarCanciones() {
-        try {
-            // Crear un ObjectOutputStream para escribir en el archivo
-            ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("src\\main\\java\\Persistencia\\canciones.ser"));
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("src/main/java/Percistencia/canciones.ser"))) {
             // Serializar la lista de canciones y escribirla en el archivo
             outputStream.writeObject(canciones);
-            // Cerrar el stream
-            outputStream.close();
             System.out.println("Las canciones han sido serializadas exitosamente.");
         } catch (IOException e) {
             // Manejar la excepción en caso de error durante la escritura
             System.err.println("Error al serializar las canciones: " + e.getMessage());
         }
     }
-    public void deserializarCancion() {
-        try {
-            ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("ruta/al/archivo/canciones.ser"));
+    public void deserializarCanciones() {
+        try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("src/main/java/Percistencia/canciones.ser"))) {
             ListaDobleEnlazada<Cancion> cancionesDeserializadas = (ListaDobleEnlazada<Cancion>) inputStream.readObject();
-            inputStream.close();
+            canciones = cancionesDeserializadas; // Asignar la lista deserializada a la lista de canciones actual
             System.out.println("Canciones deserializadas con éxito.");
         } catch (IOException | ClassNotFoundException e) {
             System.err.println("Error al deserializar las canciones: " + e.getMessage());
@@ -230,12 +227,10 @@ public class TiendaMusica {
         System.out.println("Canción agregada: " + nuevaCancion.getNombre());
     }
 
-
-    //metodo para eliminar la cancion
-
-
-
-
+    //metodo obtener canciones
+    public static ListaDobleEnlazada<Cancion> obtenerCanciones() {
+        return canciones;
+    }
 
     //Getter y Setters
     public HashMap<String, Usuario> getUsuarios() {

@@ -60,15 +60,11 @@ public class AddSongController implements Initializable {
         txtURL.clear();
         txtGenero.clear();
     }
-
     @FXML
     void showLimpiar(ActionEvent event) {
         limpiarCampos();
     }
-
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
+    public void initialize(URL url, ResourceBundle resourceBundle) {    }
 }
 

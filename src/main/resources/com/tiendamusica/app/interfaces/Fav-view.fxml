@@ -23,16 +23,18 @@
                </image>
             </ImageView>
          </graphic></Button>
-        <TableView layoutY="78.0" prefHeight="273.0" prefWidth="433.0">
+        <TableView fx:id="tableCanciones" layoutY="78.0" prefHeight="273.0" prefWidth="433.0">
             <columns>
-                <TableColumn prefWidth="149.0" text="Nombre" />
-                <TableColumn prefWidth="72.0" text="Año" />
-                <TableColumn prefWidth="138.0" text="Artista" />
-                <TableColumn prefWidth="73.0" text="Duracion" />
+                <TableColumn fx:id="columNombre" prefWidth="149.0" text="Nombre" />
+                <TableColumn fx:id="tableNombreAlbum" prefWidth="121.0" text="Nombre Album" />
+                <TableColumn fx:id="columURL" prefWidth="89.0" text="URL" />
+                <TableColumn fx:id="columDuracion" prefWidth="73.0" text="Duracion" />
             </columns>
         </TableView>
         <Button fx:id="btnBuscar" layoutX="14.0" layoutY="39.0" mnemonicParsing="false" onAction="#showBuscar" style="-fx-background-color: #576A8B; -fx-border-width: 0px 0px 1px 0px; -fx-border-color: #FFFFFF;" text="Buscar" textFill="WHITE" />
         <TextField fx:id="txtBuscar" layoutX="83.0" layoutY="39.0" promptText="Buscador..." />
       <Separator layoutX="117.0" layoutY="29.0" prefWidth="200.0" />
+      <Button fx:id="bntEliminar" layoutX="34.0" layoutY="360.0" mnemonicParsing="false" onAction="#showEliminar" style="-fx-background-color: rgba(87,106,139,0); -fx-border-width: 1px 1px 1px 1px; -fx-border-color: #FFFFFF;" text="Eliminar" />
+      <Button fx:id="bntDesahacer" layoutX="179.0" layoutY="360.0" mnemonicParsing="false" onAction="#showDesahacer" style="-fx-background-color: rgba(87,106,139,0); -fx-border-width: 1px 1px 1px 1px; -fx-border-color: #FFFFFF;" text="Desahacer" />
     </children>
 </AnchorPane>

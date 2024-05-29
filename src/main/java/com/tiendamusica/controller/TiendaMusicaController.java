@@ -28,8 +28,6 @@ public class TiendaMusicaController implements Initializable {
     @FXML
     private AnchorPane panelDerecho;
     @FXML
-    private Button btnEliminar;
-    @FXML
     private Button btnAgregar;
     @FXML
     private AnchorPane panelFormulario;
@@ -73,10 +71,6 @@ public class TiendaMusicaController implements Initializable {
         }
     }
 
-    @FXML
-    void showEliminar(ActionEvent event) {
-
-    }
 
     //Abre interfas de funciones de usuario
     private void redireccionarAdmin() throws IOException {

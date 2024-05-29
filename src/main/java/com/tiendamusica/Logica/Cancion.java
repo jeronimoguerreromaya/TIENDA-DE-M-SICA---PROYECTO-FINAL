@@ -56,6 +56,8 @@ public class Cancion implements Comparable<Cancion>, Serializable {
     public String getGenero() {
         return genero;
     }
+    public URL getUrl() { return url; }
+    public void setUrl(URL url) { this.url = url; }
 
     public void setGenero(String genero) {
         this.genero = genero;
